@@ -2,233 +2,453 @@
 <html lang="en-GB">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Dreamy Joe | Markie Diamond</title>
   <meta name="description" content="Dreamy Joe: rhyming bedtime animal adventures with gentle life lessons. By Markie Diamond." />
 
   <style>
     :root{
-      --bg:#fff9f0;
-      --card:#ffffff;
       --ink:#1f2937;
       --muted:#4b5563;
-      --brand:#ff6b6b;
-      --brand2:#3b82f6;
-      --shadow: 0 10px 30px rgba(0,0,0,.10);
-      --radius: 18px;
-      --max: 1100px;
+      --card:#ffffff;
+      --shadow: 0 18px 45px rgba(15, 23, 42, .12);
+      --r:22px;
+      --pink:#ff5fa2;
+      --blue:#3b82f6;
+      --yellow:#fbbf24;
+      --mint:#34d399;
+      --lav:#a78bfa;
     }
+
     *{box-sizing:border-box}
     body{
       margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--ink);
-      background: radial-gradient(1200px 600px at 20% 0%, #fff 0%, var(--bg) 60%) fixed;
+      background:
+        radial-gradient(1200px 700px at 15% 0%, #ffffff 0%, #f7fbff 40%, #fdf4ff 100%);
+      overflow-x:hidden;
     }
-    a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:22px}
+
+    /* playful background */
+    .sky {
+      position:fixed; inset:0;
+      pointer-events:none;
+      background:
+        radial-gradient(circle at 20% 15%, rgba(59,130,246,.12), transparent 40%),
+        radial-gradient(circle at 80% 10%, rgba(255,95,162,.10), transparent 42%),
+        radial-gradient(circle at 70% 65%, rgba(52,211,153,.10), transparent 45%);
+      z-index:-3;
+    }
+    .cloud{
+      position:fixed;
+      width:340px; height:140px;
+      background: rgba(255,255,255,.75);
+      border: 1px solid rgba(15,23,42,.06);
+      border-radius: 999px;
+      filter: blur(.0px);
+      box-shadow: 0 18px 40px rgba(15,23,42,.08);
+      z-index:-2;
+      opacity:.85;
+    }
+    .cloud:before,.cloud:after{
+      content:"";
+      position:absolute;
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(15,23,42,.05);
+      border-radius:999px;
+    }
+    .cloud:before{ width:150px; height:110px; left:40px; top:-45px; }
+    .cloud:after { width:190px; height:130px; right:35px; top:-55px; }
+
+    .c1{ top:80px; left:-60px; transform:rotate(2deg); }
+    .c2{ top:210px; right:-90px; transform:rotate(-3deg); width:420px; }
+    .c3{ bottom:110px; left:10%; transform:rotate(1deg); width:460px; opacity:.75; }
+    .stars{
+      position:fixed; inset:0; z-index:-3; pointer-events:none;
+      background-image:
+        radial-gradient(rgba(255,255,255,.9) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity:.18;
+      mix-blend-mode: overlay;
+    }
+
+    .wrap{ max-width:1120px; margin:0 auto; padding:22px; }
+
+    /* header */
     .topbar{
-      display:flex; align-items:center; justify-content:space-between; gap:16px;
-      padding:10px 0;
+      display:flex; justify-content:space-between; align-items:center; gap:14px;
+      padding:10px 0 4px;
     }
     .brand{
       display:flex; flex-direction:column; line-height:1.05;
     }
-    .brand strong{font-size:18px; letter-spacing:.2px}
-    .brand span{font-size:13px; color:var(--muted)}
-    .btns{display:flex; gap:10px; flex-wrap:wrap}
+    .brand .name{ font-weight:900; letter-spacing:.2px; font-size:18px; }
+    .brand .tag{ font-size:13px; color:var(--muted); }
+    .btnrow{ display:flex; gap:10px; flex-wrap:wrap; }
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 14px; border-radius:999px; text-decoration:none;
-      background:var(--card); border:1px solid rgba(0,0,0,.08);
-      box-shadow: 0 6px 18px rgba(0,0,0,.06);
-      font-weight:600; font-size:14px;
+      padding:11px 14px;
+      border-radius:999px;
+      font-weight:800; font-size:14px;
+      border:1px solid rgba(15,23,42,.10);
+      background: rgba(255,255,255,.85);
+      backdrop-filter: blur(6px);
+      text-decoration:none;
+      box-shadow: 0 10px 24px rgba(15,23,42,.08);
     }
-    .btn.primary{background:var(--brand); color:#fff; border:none}
-    .btn.secondary{background:var(--brand2); color:#fff; border:none}
+    .btn.uk{ background: linear-gradient(135deg, var(--pink), var(--lav)); color:white; border:none; }
+    .btn.us{ background: linear-gradient(135deg, var(--blue), var(--mint)); color:white; border:none; }
+    .btn.ghost{ }
+
+    /* hero */
     .hero{
+      margin-top:12px;
       display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:18px;
-      align-items:center;
-      margin-top:10px;
+      grid-template-columns: 1.05fr .95fr;
+      gap:16px;
+      align-items:stretch;
     }
     .card{
-      background:var(--card);
-      border-radius:var(--radius);
+      background: rgba(255,255,255,.88);
+      border: 1px solid rgba(15,23,42,.08);
+      border-radius: var(--r);
       box-shadow: var(--shadow);
-      border:1px solid rgba(0,0,0,.06);
+      overflow:hidden;
     }
-    .hero .left{padding:24px}
-    h1{margin:0 0 8px; font-size:40px}
-    .sub{margin:0 0 16px; color:var(--muted); font-size:16px; line-height:1.4}
-    .pillrow{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
-    .pill{
+    .heroLeft{ padding:26px; position:relative; }
+    .kicker{
+      display:inline-flex; gap:8px; align-items:center;
       padding:8px 12px; border-radius:999px;
-      background:#fff3e6; border:1px solid rgba(0,0,0,.06);
-      font-weight:600; font-size:13px;
+      background: rgba(251,191,36,.18);
+      border: 1px solid rgba(251,191,36,.35);
+      font-weight:900; font-size:13px;
     }
-    .hero .right{
-      padding:18px;
-      display:grid;
-      gap:12px;
+    h1{
+      margin:12px 0 8px;
+      font-size:48px; line-height:1.02;
+      letter-spacing:-.6px;
     }
-    .heroimg{
-      width:100%;
-      display:block;
-      border-radius:14px;
-      background:#fff;
-      border:1px solid rgba(0,0,0,.06);
+    .headline2{
+      margin:0 0 14px;
+      font-size:18px;
+      color:var(--muted);
+      line-height:1.45;
     }
-    .covers{
-      width:100%;
-      display:block;
-      border-radius:14px;
-      border:1px solid rgba(0,0,0,.06);
-      background:#fff;
+    .pills{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+    .pill{
+      padding:9px 12px;
+      border-radius:999px;
+      background: rgba(255,255,255,.9);
+      border: 1px solid rgba(15,23,42,.10);
+      font-weight:800;
+      font-size:13px;
     }
 
-    .section{margin-top:18px}
-    .section h2{margin:0 0 10px; font-size:22px}
+    .heroRight{ padding:18px; display:grid; gap:12px; align-content:start; }
+    .joeBox{
+      border-radius:18px;
+      background: linear-gradient(135deg, rgba(59,130,246,.10), rgba(255,95,162,.10));
+      border: 1px solid rgba(15,23,42,.08);
+      padding:12px;
+    }
+    .joeImg{
+      width:100%;
+      display:block;
+      border-radius:16px;
+      border: 1px solid rgba(15,23,42,.08);
+      background:white;
+    }
+
+    /* covers deck */
+    .deck{
+      position:relative;
+      min-height:240px;
+      border-radius:18px;
+      border: 1px solid rgba(15,23,42,.08);
+      background: rgba(255,255,255,.7);
+      padding:14px;
+      overflow:hidden;
+    }
+    .deckTitle{ font-weight:900; margin:0 0 8px; }
+    .coverStack{
+      position:relative;
+      height:190px;
+    }
+    .coverCard{
+      position:absolute;
+      width:140px; height:190px;
+      border-radius:14px;
+      overflow:hidden;
+      border:1px solid rgba(15,23,42,.10);
+      box-shadow: 0 16px 34px rgba(15,23,42,.18);
+      background:#fff;
+    }
+    .coverCard img{
+      width:100%; height:100%; object-fit:cover; display:block;
+      transform: scale(1.03);
+    }
+
+    /* section */
+    .section{ margin-top:16px; }
+    .sectionHead{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:10px;
+      padding:18px 18px 0;
+    }
+    .sectionHead h2{ margin:0; font-size:22px; }
+    .sectionHead p{ margin:0; color:var(--muted); font-weight:700; }
+
     .grid{
+      padding:14px 18px 18px;
       display:grid;
       grid-template-columns: repeat(4, 1fr);
       gap:12px;
     }
     .book{
-      padding:12px;
-      display:flex; flex-direction:column; gap:8px;
-    }
-    .book small{color:var(--muted)}
-    .book a{ text-decoration:none }
-    .book .link{font-weight:700}
-    .mini{
-      display:flex; gap:10px; flex-wrap:wrap;
-      padding:16px;
-    }
-    .mini .item{
-      flex:1 1 220px;
       padding:14px;
-      border-radius:14px;
-      background:#f8fafc;
-      border:1px solid rgba(0,0,0,.06);
+      border-radius:18px;
+      border:1px solid rgba(15,23,42,.10);
+      background: rgba(255,255,255,.92);
+      box-shadow: 0 10px 22px rgba(15,23,42,.08);
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .book .title{ font-weight:950; font-size:14px; }
+    .book .theme{ color:var(--muted); font-weight:800; font-size:12.5px; }
+    .links{ display:flex; gap:8px; flex-wrap:wrap; }
+    .miniBtn{
+      padding:9px 10px;
+      border-radius:999px;
+      font-weight:900;
+      font-size:12.5px;
+      text-decoration:none;
+      border:1px solid rgba(15,23,42,.12);
+      background:white;
+    }
+    .miniBtn.uk{ border:none; color:white; background: linear-gradient(135deg, var(--pink), var(--lav)); }
+    .miniBtn.us{ border:none; color:white; background: linear-gradient(135deg, var(--blue), var(--mint)); }
+
+    /* quote */
+    .quote{
+      margin-top:16px;
+      padding:18px;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:14px;
+      align-items:center;
+    }
+    .quoteBlock{
+      padding:18px;
+      border-radius:18px;
+      border:1px solid rgba(15,23,42,.10);
+      background: rgba(255,255,255,.92);
+      box-shadow: 0 10px 22px rgba(15,23,42,.08);
+    }
+    .stars{ font-size:18px; letter-spacing:1px; }
+    .quoteText{ margin:10px 0 8px; font-weight:850; line-height:1.35; }
+    .quoteNote{ margin:0; color:var(--muted); font-weight:700; font-size:12.5px; }
+    .ctaBox{
+      padding:18px;
+      border-radius:18px;
+      border:1px solid rgba(15,23,42,.10);
+      background: linear-gradient(135deg, rgba(255,95,162,.12), rgba(59,130,246,.10));
+      box-shadow: 0 10px 22px rgba(15,23,42,.08);
+    }
+    .ctaBox h3{ margin:0 0 8px; }
+    .ctaBox p{ margin:0 0 12px; color:var(--muted); font-weight:700; }
+    .ctaRow{ display:flex; gap:10px; flex-wrap:wrap; }
+
+    /* contact */
+    .contact{
+      margin-top:16px;
+      padding:18px;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      flex-wrap:wrap;
+    }
+    .email{ font-weight:950; }
+    .copyBtn{
+      cursor:pointer;
+      padding:11px 14px;
+      border-radius:999px;
+      border:1px solid rgba(15,23,42,.10);
+      background:white;
+      font-weight:900;
+      box-shadow: 0 10px 22px rgba(15,23,42,.08);
     }
     .footer{
-      margin-top:18px;
-      padding:16px;
-      display:flex; flex-wrap:wrap; gap:10px;
-      align-items:center; justify-content:space-between;
+      margin:16px 0 8px;
+      padding:14px 18px;
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
       color:var(--muted);
+      font-weight:700;
       font-size:13px;
     }
-    .footer a{color:var(--muted)}
 
-    @media (max-width: 900px){
-      .hero{grid-template-columns:1fr}
-      h1{font-size:34px}
-      .grid{grid-template-columns: repeat(2, 1fr)}
+    @media (max-width: 980px){
+      .hero{ grid-template-columns: 1fr; }
+      h1{ font-size:40px; }
+      .grid{ grid-template-columns: repeat(2, 1fr); }
+      .quote{ grid-template-columns: 1fr; }
     }
     @media (max-width: 520px){
-      .grid{grid-template-columns: 1fr}
-      .btns{width:100%}
-      .btn{flex:1}
+      .grid{ grid-template-columns: 1fr; }
+      .coverCard{ width:120px; height:165px; }
+      .coverStack{ height:175px; }
+      h1{ font-size:36px; }
     }
   </style>
 </head>
 
 <body>
+  <div class="sky"></div>
+  <div class="stars"></div>
+  <div class="cloud c1"></div>
+  <div class="cloud c2"></div>
+  <div class="cloud c3"></div>
+
   <div class="wrap">
     <div class="topbar">
       <div class="brand">
-        <strong>Markie Diamond</strong>
-        <span>Dreamy Joe — bedtime animal adventures</span>
+        <div class="name">Markie Diamond</div>
+        <div class="tag">Dreamy Joe — bedtime animal adventures</div>
       </div>
 
-      <div class="btns">
-        <a class="btn primary" id="buyUk" href="#" target="_blank" rel="noopener">Buy on Amazon UK</a>
-        <a class="btn secondary" id="buyUs" href="#" target="_blank" rel="noopener">Buy on Amazon US</a>
-        <a class="btn" href="mailto:markie@markiediamond.com">Contact</a>
+      <div class="btnrow">
+        <a class="btn uk" id="topUk" href="#" target="_blank" rel="noopener">Amazon UK</a>
+        <a class="btn us" id="topUs" href="#" target="_blank" rel="noopener">Amazon US</a>
+        <a class="btn ghost" href="#contact">Email Markie</a>
       </div>
     </div>
 
     <div class="hero">
-      <div class="card left">
+      <div class="card heroLeft">
+        <div class="kicker">Stories that sparkle • Bedtime adventures</div>
         <h1>Dreamy Joe</h1>
-        <p class="sub">
-          Rhyming bedtime stories where Joe falls asleep and becomes a different animal each night —
-          with gentle lessons on courage, kindness, confidence and more.
-        </p>
+        <div class="headline2">
+          Joe is a typical kid… until he falls asleep. Each night, he dreams he becomes a different animal —
+          with gentle lessons about courage, kindness, patience, inclusion and more.
+        </div>
 
-        <div class="pillrow">
+        <div class="pills">
           <div class="pill">Ages 3–6</div>
           <div class="pill">Rhyming & read-aloud friendly</div>
           <div class="pill">Big illustrations</div>
-          <div class="pill">Life lessons (light, not preachy)</div>
+          <div class="pill">Warm, funny, and calming</div>
         </div>
 
-        <p class="sub" style="margin-top:14px;">
-          Browse all eight titles below. Start with any book — each story stands alone.
+        <div class="pills" style="margin-top:16px;">
+          <a class="btn uk" id="heroUk" href="#" target="_blank" rel="noopener">Shop on Amazon UK</a>
+          <a class="btn us" id="heroUs" href="#" target="_blank" rel="noopener">Shop on Amazon US</a>
+        </div>
+      </div>
+
+      <div class="card heroRight">
+        <div class="joeBox">
+          <img class="joeImg" src="assets-joe.png" alt="Dreamy Joe character" />
+        </div>
+
+        <div class="deck">
+          <div class="deckTitle">The 8-book set</div>
+          <div class="coverStack" aria-label="Dreamy Joe covers">
+            <!-- Replace the images below with your 8 separate cover files -->
+            <div class="coverCard" style="left:0; top:18px; transform:rotate(-10deg);">
+              <img src="assets-cover-1.png" alt="Dreamy Joe cover 1">
+            </div>
+            <div class="coverCard" style="left:70px; top:0; transform:rotate(6deg);">
+              <img src="assets-cover-2.png" alt="Dreamy Joe cover 2">
+            </div>
+            <div class="coverCard" style="left:140px; top:26px; transform:rotate(-4deg);">
+              <img src="assets-cover-3.png" alt="Dreamy Joe cover 3">
+            </div>
+            <div class="coverCard" style="left:210px; top:6px; transform:rotate(10deg);">
+              <img src="assets-cover-4.png" alt="Dreamy Joe cover 4">
+            </div>
+            <div class="coverCard" style="left:280px; top:30px; transform:rotate(-6deg);">
+              <img src="assets-cover-5.png" alt="Dreamy Joe cover 5">
+            </div>
+          </div>
+
+          <!-- OPTIONAL FALLBACK:
+               If you only have a collage for now, upload it as assets-covers.png
+               and uncomment the line below, then comment out the coverCard blocks above.
+
+               <img class="joeImg" style="margin-top:10px;" src="assets-covers.png" alt="All Dreamy Joe covers collage" />
+          -->
+        </div>
+      </div>
+    </div>
+
+    <div class="section card">
+      <div class="sectionHead">
+        <h2>The books</h2>
+        <p>Pick any title — each story stands alone.</p>
+      </div>
+
+      <div class="grid" id="booksGrid"></div>
+    </div>
+
+    <div class="quote card">
+      <div class="quoteBlock">
+        <div class="stars">★★★★★</div>
+        <div class="quoteText">
+          “Our kids asked for Dreamy Joe every night this week — the animals are brilliant and the lessons are so gentle.”
+        </div>
+        <p class="quoteNote">
+          Placeholder quote for now — replace with a real review once you have one.
         </p>
       </div>
 
-      <div class="card right">
-        <!-- Your two images go here -->
-        <img class="heroimg" src="assets-joe.png" alt="Dreamy Joe illustration" />
-        <img class="covers" src="assets-covers.png" alt="Dreamy Joe book covers" />
+      <div class="ctaBox">
+        <h3>Start your Dreamy Joe collection</h3>
+        <p>Buy individual books on Amazon (UK/US). Bulk orders via email.</p>
+        <div class="ctaRow">
+          <a class="btn uk" id="ctaUk" href="#" target="_blank" rel="noopener">Amazon UK</a>
+          <a class="btn us" id="ctaUs" href="#" target="_blank" rel="noopener">Amazon US</a>
+        </div>
       </div>
     </div>
 
-    <div class="section card" style="padding:18px;">
-      <h2>The books</h2>
-      <div class="grid" id="booksGrid">
-        <!-- Cards are generated by JS so you can paste Amazon links later -->
+    <div class="contact card" id="contact">
+      <div>
+        <div style="font-weight:950; font-size:16px;">Contact</div>
+        <div class="email" id="emailText">markie@markiediamond.com</div>
       </div>
-    </div>
-
-    <div class="section card mini">
-      <div class="item"><strong>Built for bedtime</strong><br><span class="sub">Short, warm stories that end calmly.</span></div>
-      <div class="item"><strong>Gentle life lessons</strong><br><span class="sub">Confidence, patience, inclusion, tolerance.</span></div>
-      <div class="item"><strong>Animal world wonder</strong><br><span class="sub">Curiosity and imagination on every page.</span></div>
-      <div class="item"><strong>Beautiful illustrations</strong><br><span class="sub">Colourful, playful, and cosy.</span></div>
-    </div>
-
-    <div class="section card" style="padding:18px;">
-      <h2>Contact</h2>
-      <p class="sub" style="margin:0 0 10px;">
-        For enquiries, schools, or bulk orders, email:
-        <a href="mailto:markie@markiediamond.com"><strong>markie@markiediamond.com</strong></a>
-      </p>
-      <a class="btn" href="mailto:markie@markiediamond.com">Email Markie</a>
+      <div class="btnrow">
+        <a class="btn ghost" href="mailto:markie@markiediamond.com">Email Markie</a>
+        <button class="copyBtn" id="copyBtn" type="button">Copy email</button>
+      </div>
     </div>
 
     <div class="footer card">
       <div>© <span id="year"></span> Markie Diamond Books</div>
-      <div>
-        <a href="mailto:markie@markiediamond.com">markie@markiediamond.com</a>
-      </div>
+      <div><a href="mailto:markie@markiediamond.com">markie@markiediamond.com</a></div>
     </div>
   </div>
 
   <script>
-    // Replace these two when you have your actual Amazon author/series links
-    const AMAZON_UK = "https://www.amazon.co.uk/";
-    const AMAZON_US = "https://www.amazon.com/";
+    // Put your real links here later:
+    const AMAZON_UK_SERIES_OR_AUTHOR = "https://www.amazon.co.uk/";
+    const AMAZON_US_SERIES_OR_AUTHOR = "https://www.amazon.com/";
 
-    document.getElementById("buyUk").href = AMAZON_UK;
-    document.getElementById("buyUs").href = AMAZON_US;
+    document.getElementById("topUk").href  = AMAZON_UK_SERIES_OR_AUTHOR;
+    document.getElementById("heroUk").href = AMAZON_UK_SERIES_OR_AUTHOR;
+    document.getElementById("ctaUk").href  = AMAZON_UK_SERIES_OR_AUTHOR;
+
+    document.getElementById("topUs").href  = AMAZON_US_SERIES_OR_AUTHOR;
+    document.getElementById("heroUs").href = AMAZON_US_SERIES_OR_AUTHOR;
+    document.getElementById("ctaUs").href  = AMAZON_US_SERIES_OR_AUTHOR;
 
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Paste individual book links later (leave "#" for now)
+    // Add your per-book UK/US links when live:
     const books = [
-      { title: "Dreamy Joe & Anxious Ant", theme: "Perseverance", link: "#" },
-      { title: "Dreamy Joe & Cheery Croc", theme: "Being yourself", link: "#" },
-      { title: "Dreamy Joe & Easy Elephant", theme: "Kindness", link: "#" },
-      { title: "Dreamy Joe & Daring Dolphin", theme: "Bravery", link: "#" },
-      { title: "Dreamy Joe & Grumpy Giraffe", theme: "Inclusion", link: "#" },
-      { title: "Dreamy Joe & Graceful Gorilla", theme: "Calm leadership", link: "#" },
-      { title: "Dreamy Joe & Patient Penguin", theme: "Patience", link: "#" },
-      { title: "Dreamy Joe & Tolerant Tiger", theme: "Tolerance", link: "#" }
+      { title:"Dreamy Joe & Anxious Ant",    theme:"Perseverance", uk:"#", us:"#"},
+      { title:"Dreamy Joe & Cheery Croc",    theme:"Being yourself", uk:"#", us:"#"},
+      { title:"Dreamy Joe & Easy Elephant",  theme:"Kindness", uk:"#", us:"#"},
+      { title:"Dreamy Joe & Daring Dolphin", theme:"Bravery", uk:"#", us:"#"},
+      { title:"Dreamy Joe & Graceful Gorilla", theme:"Calm leadership", uk:"#", us:"#"},
+      { title:"Dreamy Joe & Grumpy Giraffe", theme:"Inclusion", uk:"#", us:"#"},
+      { title:"Dreamy Joe & Patient Penguin", theme:"Patience", uk:"#", us:"#"},
+      { title:"Dreamy Joe & Tolerant Tiger", theme:"Tolerance", uk:"#", us:"#"}
     ];
 
     const grid = document.getElementById("booksGrid");
@@ -236,11 +456,28 @@
       const el = document.createElement("div");
       el.className = "book";
       el.innerHTML = `
-        <div style="font-weight:800; font-size:14px;">${b.title}</div>
-        <small>${b.theme}</small>
-        <a class="link" href="${b.link}" target="_blank" rel="noopener">View on Amazon →</a>
+        <div class="title">${b.title}</div>
+        <div class="theme">${b.theme}</div>
+        <div class="links">
+          <a class="miniBtn uk" href="${b.uk}" target="_blank" rel="noopener">UK</a>
+          <a class="miniBtn us" href="${b.us}" target="_blank" rel="noopener">US</a>
+        </div>
       `;
       grid.appendChild(el);
+    });
+
+    // copy email
+    document.getElementById("copyBtn").addEventListener("click", async () => {
+      const email = document.getElementById("emailText").textContent.trim();
+      try {
+        await navigator.clipboard.writeText(email);
+        const btn = document.getElementById("copyBtn");
+        const old = btn.textContent;
+        btn.textContent = "Copied!";
+        setTimeout(() => btn.textContent = old, 1200);
+      } catch (e) {
+        alert(email);
+      }
     });
   </script>
 </body>
