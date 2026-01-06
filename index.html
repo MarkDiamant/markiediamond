@@ -18,7 +18,6 @@
       --blue:#3b82f6;
       --mint:#34d399;
       --lav:#a78bfa;
-      --yellow:#fbbf24;
       --radius:18px;
     }
 
@@ -33,18 +32,47 @@
       overflow-x:hidden;
     }
 
-    /* soft clouds */
+    /* subtle stars */
+    .stars{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background-image:
+        radial-gradient(rgba(255,255,255,.9) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity:.25;
+      z-index:-2;
+    }
+
+    /* clouds */
     .cloud{
       position:fixed;
       width:420px; height:160px;
-      background:rgba(255,255,255,.8);
+      background:rgba(255,255,255,.9);
       border-radius:999px;
-      box-shadow:0 20px 40px rgba(0,0,0,.08);
+      box-shadow:0 20px 40px rgba(0,0,0,.1);
       z-index:-1;
     }
-    .c1{top:80px; left:-120px}
-    .c2{top:220px; right:-140px}
-    .c3{bottom:120px; left:15%}
+    .cloud::before,
+    .cloud::after{
+      content:"";
+      position:absolute;
+      background:rgba(255,255,255,.92);
+      border-radius:999px;
+    }
+    .cloud::before{
+      width:180px; height:130px;
+      top:-60px; left:60px;
+    }
+    .cloud::after{
+      width:220px; height:150px;
+      top:-70px; right:50px;
+    }
+
+    .c1{top:60px; left:-140px}
+    .c2{top:220px; right:-160px}
+    .c3{bottom:120px; left:12%}
+    .c4{bottom:40px; right:15%; width:480px; opacity:.85}
 
     .wrap{max-width:1150px; margin:0 auto; padding:24px}
 
@@ -58,7 +86,7 @@
     }
 
     .brand{
-      font-size:28px;
+      font-size:30px;
       font-weight:700;
     }
 
@@ -73,14 +101,13 @@
 
     .uk{background:linear-gradient(135deg,var(--pink),var(--lav))}
     .us{background:linear-gradient(135deg,var(--blue),var(--mint))}
-    .ghost{background:#fff;color:var(--ink);box-shadow:var(--shadow)}
 
     /* hero */
     .hero{
       display:grid;
       grid-template-columns:1.1fr .9fr;
       gap:20px;
-      margin-bottom:24px;
+      margin-bottom:26px;
     }
 
     .card{
@@ -92,7 +119,7 @@
 
     h1{
       margin:8px 0 10px;
-      font-size:52px;
+      font-size:54px;
       line-height:1.05;
       background:linear-gradient(90deg,var(--pink),var(--lav),var(--blue),var(--mint));
       -webkit-background-clip:text;
@@ -108,7 +135,7 @@
 
     .desc{
       font-size:16px;
-      margin-bottom:16px;
+      margin-bottom:14px;
     }
 
     .heroBtns{display:flex;gap:12px;flex-wrap:wrap}
@@ -121,76 +148,65 @@
 
     /* covers */
     .covers{
-      margin-top:26px;
+      margin-top:28px;
       display:grid;
       grid-template-columns:repeat(4,1fr);
-      gap:14px;
+      gap:16px;
     }
 
     .cover{
-      border-radius:14px;
+      border-radius:16px;
       overflow:hidden;
-      box-shadow:0 14px 28px rgba(0,0,0,.18);
+      box-shadow:0 14px 28px rgba(0,0,0,.2);
       transform:rotate(-2deg);
     }
-
     .cover:nth-child(even){transform:rotate(2deg)}
-
     .cover img{width:100%;display:block}
 
-    /* quote */
+    /* quote + contact */
     .quote{
-      margin:30px 0;
+      margin:32px 0;
       display:grid;
       grid-template-columns:1.1fr .9fr;
       gap:20px;
     }
 
-    .stars{font-size:20px}
+    .starsText{font-size:20px}
     .quoteText{font-size:18px;margin:10px 0}
 
-    /* contact */
-    .contact{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:14px;
-      flex-wrap:wrap;
-    }
-
-    .copyBtn{
-      padding:12px 18px;
-      border-radius:14px;
+    .contactBtn{
+      padding:14px 20px;
+      border-radius:16px;
       border:none;
       background:#fff;
       box-shadow:var(--shadow);
       font-weight:700;
       cursor:pointer;
+      font-size:15px;
     }
 
     footer{
       margin-top:30px;
       font-size:14px;
       color:var(--muted);
-      display:flex;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      gap:10px;
     }
 
     @media(max-width:900px){
       .hero{grid-template-columns:1fr}
       .quote{grid-template-columns:1fr}
       .covers{grid-template-columns:repeat(2,1fr)}
-      h1{font-size:44px}
+      h1{font-size:46px}
+      .stars{opacity:.15}
     }
   </style>
 </head>
 
 <body>
+  <div class="stars"></div>
   <div class="cloud c1"></div>
   <div class="cloud c2"></div>
   <div class="cloud c3"></div>
+  <div class="cloud c4"></div>
 
   <div class="wrap">
     <div class="top">
@@ -198,7 +214,6 @@
       <div>
         <a class="btn uk" href="#">Amazon UK</a>
         <a class="btn us" href="#">Amazon US</a>
-        <a class="btn ghost" href="mailto:markie@markiediamond.com">Email Markie</a>
       </div>
     </div>
 
@@ -206,13 +221,18 @@
       <div class="card">
         <div class="tagline">Bedtime animal adventures that sparkle</div>
         <h1>Dreamy Joe</h1>
+
         <div class="desc">
           Joe is a typical kid… until he falls asleep. Each night, he dreams he becomes a different animal —
           with gentle lessons about courage, kindness, patience, inclusion and more.
         </div>
+
         <div class="desc">
-          For ages 3–6. Rhyming, read-aloud friendly, big illustrations — warm, funny, and calming.
+          <strong>
+            Perfect for ages 3–6, with gentle rhymes, big colourful illustrations, and calm, comforting bedtime stories children love to hear again and again.
+          </strong>
         </div>
+
         <div class="heroBtns">
           <a class="btn uk" href="#">Shop on Amazon UK</a>
           <a class="btn us" href="#">Shop on Amazon US</a>
@@ -225,45 +245,48 @@
     </div>
 
     <div class="covers">
-      <div class="cover"><img src="assets-cover-1.png"></div>
-      <div class="cover"><img src="assets-cover-2.png"></div>
-      <div class="cover"><img src="assets-cover-3.png"></div>
-      <div class="cover"><img src="assets-cover-4.png"></div>
-      <div class="cover"><img src="assets-cover-5.png"></div>
-      <div class="cover"><img src="assets-cover-6.png"></div>
-      <div class="cover"><img src="assets-cover-7.png"></div>
-      <div class="cover"><img src="assets-cover-8.png"></div>
+      <div class="cover"><img src="assets-covers-1.png"></div>
+      <div class="cover"><img src="assets-covers-2.png"></div>
+      <div class="cover"><img src="assets-covers-3.png"></div>
+      <div class="cover"><img src="assets-covers-4.png"></div>
+      <div class="cover"><img src="assets-covers-5.png"></div>
+      <div class="cover"><img src="assets-covers-6.png"></div>
+      <div class="cover"><img src="assets-covers-7.png"></div>
+      <div class="cover"><img src="assets-covers-8.png"></div>
     </div>
 
     <div class="quote">
       <div class="card">
-        <div class="stars">★★★★★</div>
+        <div class="starsText">★★★★★</div>
         <div class="quoteText">
           “Our kids asked for Dreamy Joe every single night — they loved every animal and couldn’t wait for the next story.”
         </div>
-        <div class="muted">— Parent review</div>
+        <div>— Parent review</div>
       </div>
 
-      <div class="card contact">
-        <div>
-          <strong>Contact</strong><br>
-          <span id="email">markie@markiediamond.com</span>
-        </div>
-        <div>
-          <a class="btn ghost" href="mailto:markie@markiediamond.com">Email Markie</a>
-          <button class="copyBtn" onclick="navigator.clipboard.writeText('markie@markiediamond.com')">Copy email</button>
-        </div>
+      <div class="card">
+        <strong>Contact</strong><br><br>
+        <button class="contactBtn" id="emailBtn">
+          Email Markie · markie@markiediamond.com
+        </button>
       </div>
     </div>
 
     <footer>
-      <div>© <span id="y"></span> Markie Diamond Books</div>
-      <div>markie@markiediamond.com</div>
+      © <span id="y"></span> Markie Diamond Books
     </footer>
   </div>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    const btn = document.getElementById("emailBtn");
+    btn.addEventListener("click", () => {
+      navigator.clipboard.writeText("markie@markiediamond.com");
+      const old = btn.textContent;
+      btn.textContent = "Email copied!";
+      setTimeout(() => btn.textContent = old, 1500);
+    });
   </script>
 </body>
 </html>
