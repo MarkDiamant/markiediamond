@@ -21,7 +21,6 @@
       --lav:#a78bfa;
       --gold:#fbbf24;
       --radius:18px;
-      --radius2:16px;
     }
 
     *{box-sizing:border-box}
@@ -35,18 +34,19 @@
       overflow-x:hidden;
     }
 
-    /* dusk tint at the top */
+    /* Stronger dusk band at top (still light overall) */
     .dusk{
       position:fixed;
       inset:0;
       pointer-events:none;
-      background:
-        radial-gradient(1200px 520px at 50% 0%, rgba(26, 86, 219, .16), transparent 55%),
-        radial-gradient(900px 480px at 20% 10%, rgba(167, 139, 250, .14), transparent 60%);
       z-index:-4;
+      background:
+        linear-gradient(to bottom, rgba(10, 40, 110, .22) 0%, rgba(10, 40, 110, .08) 22%, rgba(10, 40, 110, 0) 46%),
+        radial-gradient(1200px 520px at 50% 0%, rgba(26, 86, 219, .18), transparent 58%),
+        radial-gradient(900px 480px at 20% 10%, rgba(167, 139, 250, .16), transparent 60%);
     }
 
-    /* stars (subtle but visible) */
+    /* Stars (more visible, but still subtle) */
     .stars{
       position:fixed;
       inset:0;
@@ -54,15 +54,17 @@
       z-index:-3;
       background-image:
         radial-gradient(rgba(255,255,255,.95) 1px, transparent 1px),
-        radial-gradient(rgba(255,255,255,.7) 1px, transparent 1px),
+        radial-gradient(rgba(255,255,255,.75) 1px, transparent 1px),
         radial-gradient(rgba(255,255,255,.55) 1px, transparent 1px);
-      background-size: 42px 42px, 66px 66px, 95px 95px;
-      background-position: 0 0, 16px 28px, 40px 10px;
-      opacity:.35;
+      background-size: 42px 42px, 70px 70px, 110px 110px;
+      background-position: 0 0, 18px 30px, 45px 14px;
+      opacity:.42;
       mix-blend-mode: overlay;
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,.9) 30%, rgba(0,0,0,0) 55%);
+              mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,.9) 30%, rgba(0,0,0,0) 55%);
     }
 
-    /* clouds (more cloud-like) */
+    /* Clouds */
     .cloud{
       position:fixed;
       width:440px; height:170px;
@@ -79,42 +81,85 @@
       background:rgba(255,255,255,.92);
       border-radius:999px;
     }
-    .cloud::before{
-      width:190px; height:140px;
-      top:-65px; left:65px;
-    }
-    .cloud::after{
-      width:235px; height:160px;
-      top:-75px; right:55px;
-    }
+    .cloud::before{ width:190px; height:140px; top:-65px; left:65px; }
+    .cloud::after { width:235px; height:160px; top:-75px; right:55px; }
 
     .c1{top:55px; left:-160px}
     .c2{top:220px; right:-180px}
     .c3{bottom:120px; left:10%}
     .c4{bottom:40px; right:14%; width:520px; opacity:.88}
 
-    .wrap{max-width:1150px; margin:0 auto; padding:24px}
+    .wrap{max-width:1150px; margin:0 auto; padding:22px}
 
-    /* header */
+    /* Header */
     .top{
       display:flex;
       justify-content:space-between;
       align-items:center;
       gap:14px;
-      margin-bottom:18px;
+      margin-bottom:14px;
     }
-
     .brand{
       font-size:30px;
       font-weight:700;
-      color:var(--ink);
-    }
-    .brand .accent{
       background:linear-gradient(90deg,var(--pink),var(--lav),var(--blue));
       -webkit-background-clip:text;
       background-clip:text;
       color:transparent;
     }
+
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:18px;
+      margin-bottom:22px;
+    }
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:22px;
+    }
+    .tagline{
+      font-size:16px;
+      color:var(--muted);
+      margin-bottom:10px;
+      font-weight:700;
+    }
+    h1{
+      margin:6px 0 8px;
+      font-size:54px;
+      line-height:1.05;
+      background:linear-gradient(90deg,var(--pink),var(--lav),var(--blue),var(--mint));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .hook{
+      margin:10px 0 10px;
+      font-size:19px;
+      font-weight:700;
+      color:#0f172a;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    .sparkle{
+      color:var(--gold);
+      text-shadow:0 6px 18px rgba(251,191,36,.25);
+    }
+
+    .desc{
+      font-size:15.5px;
+      margin:0 0 10px;
+      color:#334155;
+      line-height:1.4;
+    }
+    .desc strong{color:#0f172a}
+
+    .heroBtns{display:flex; gap:12px; flex-wrap:wrap; margin-top:10px}
 
     .btn{
       padding:12px 18px;
@@ -127,72 +172,15 @@
     }
     .btn:hover{transform:translateY(-1px); filter:brightness(1.02)}
     .btn:active{transform:translateY(0px); filter:brightness(.98)}
-
     .uk{background:linear-gradient(135deg,var(--pink),var(--lav))}
     .us{background:linear-gradient(135deg,var(--blue),var(--mint))}
 
-    /* hero */
-    .hero{
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:20px;
-      margin-bottom:26px;
-    }
-
-    .card{
-      background:var(--card);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:26px;
-    }
-
-    .tagline{
-      font-size:18px;
-      color:var(--muted);
-      margin-bottom:14px;
-    }
-
-    h1{
-      margin:8px 0 10px;
-      font-size:56px;
-      line-height:1.05;
-      background:linear-gradient(90deg,var(--pink),var(--lav),var(--blue),var(--mint));
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-    }
-
-    .hook{
-      margin:10px 0 14px;
-      font-size:20px;
-      font-weight:700;
-      color:#0f172a;
-      display:flex;
-      align-items:center;
-      gap:8px;
-    }
-    .sparkle{
-      display:inline-block;
-      transform:translateY(-1px);
-      color:var(--gold);
-      text-shadow:0 6px 18px rgba(251,191,36,.25);
-    }
-
-    .desc{
-      font-size:16px;
-      margin-bottom:14px;
-      color:#334155;
-    }
-
-    .desc strong{color:#0f172a}
-
-    .heroBtns{display:flex;gap:12px;flex-wrap:wrap; margin-top:14px}
-
     .subcta{
-      margin-top:14px;
+      margin-top:10px;
       color:var(--muted);
-      font-size:15px;
+      font-size:14.5px;
       line-height:1.35;
+      font-weight:700;
     }
     .subcta a{
       color:#0f172a;
@@ -209,14 +197,13 @@
       display:block;
     }
 
-    /* covers */
+    /* Covers grid */
     .covers{
-      margin-top:28px;
+      margin-top:18px;
       display:grid;
       grid-template-columns:repeat(4,1fr);
       gap:16px;
     }
-
     .cover{
       position:relative;
       border-radius:16px;
@@ -226,14 +213,9 @@
       background:#fff;
     }
     .cover:nth-child(even){transform:rotate(2deg)}
-    .cover img{
-      width:100%;
-      display:block;
-      transition:transform .18s ease;
-    }
+    .cover img{width:100%; display:block; transition:transform .18s ease}
     .cover:hover img{transform:scale(1.03)}
 
-    /* hover/tap overlay buttons */
     .overlay{
       position:absolute;
       inset:auto 10px 10px 10px;
@@ -245,6 +227,7 @@
       pointer-events:none;
     }
     .cover:hover .overlay{opacity:1; transform:translateY(0); pointer-events:auto}
+
     .overlay a{
       flex:1;
       text-align:center;
@@ -260,7 +243,6 @@
     .overlay .ukBtn{background:linear-gradient(135deg,var(--pink),var(--lav))}
     .overlay .usBtn{background:linear-gradient(135deg,var(--blue),var(--mint))}
 
-    /* make overlay accessible on touch devices */
     @media (hover:none){
       .overlay{
         opacity:1;
@@ -269,17 +251,15 @@
         position:static;
         margin:10px 10px 12px;
       }
-      .cover{padding-bottom:0}
     }
 
-    /* quote + contact */
+    /* Quote + contact */
     .quote{
-      margin:32px 0;
+      margin:28px 0 0;
       display:grid;
       grid-template-columns:1.1fr .9fr;
       gap:20px;
     }
-
     .starsText{
       font-size:22px;
       color:var(--gold);
@@ -290,6 +270,7 @@
       font-size:18px;
       margin:10px 0 6px;
       color:#0f172a;
+      line-height:1.35;
     }
     .quoteBy{
       color:var(--muted);
@@ -313,26 +294,12 @@
       justify-content:space-between;
       gap:10px;
     }
-    .contactBtn .label{
-      font-weight:700;
-      color:#0f172a;
-      white-space:nowrap;
-    }
-    .contactBtn .email{
-      font-weight:700;
-      color:var(--blue);
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-    .contactBtn .hint{
-      font-size:13px;
-      color:var(--muted);
-      font-weight:700;
-      white-space:nowrap;
-    }
+    .contactBtn .label{font-weight:700;color:#0f172a;white-space:nowrap;}
+    .contactBtn .email{font-weight:700;color:var(--blue);overflow:hidden;text-overflow:ellipsis;}
+    .contactBtn .hint{font-size:13px;color:var(--muted);font-weight:700;white-space:nowrap;}
 
     footer{
-      margin-top:30px;
+      margin-top:22px;
       font-size:14px;
       color:var(--muted);
       font-weight:700;
@@ -343,7 +310,6 @@
       .quote{grid-template-columns:1fr}
       .covers{grid-template-columns:repeat(2,1fr)}
       h1{font-size:48px}
-      .stars{opacity:.25}
     }
   </style>
 </head>
@@ -358,16 +324,13 @@
 
   <div class="wrap">
     <div class="top">
-      <div class="brand">Markie <span class="accent">Diamond</span></div>
-      <div>
-        <a class="btn uk" id="topUk" href="#" target="_blank" rel="noopener">Amazon UK</a>
-        <a class="btn us" id="topUs" href="#" target="_blank" rel="noopener">Amazon US</a>
-      </div>
+      <div class="brand">Markie Diamond</div>
+      <div></div>
     </div>
 
     <div class="hero">
       <div class="card">
-        <div class="tagline">Bedtime animal adventures that sparkle</div>
+        <div class="tagline">Rhyming animal adventures for calm, cosy reading</div>
         <h1>Dreamy Joe</h1>
 
         <div class="hook">
@@ -382,7 +345,7 @@
         </div>
 
         <div class="desc">
-          <strong>Warm, rhythmic stories written in gentle rhyme</strong> — perfect for reading aloud at bedtime.
+          <strong>Warm, rhythmic stories written in gentle rhyme</strong> — perfect for reading aloud.
         </div>
 
         <div class="heroBtns">
@@ -401,7 +364,6 @@
       </div>
     </div>
 
-    <!-- Covers grid: each cover has UK/US buttons (hover on desktop, always visible on touch) -->
     <div class="covers">
       <div class="cover" data-book="1">
         <img src="assets-covers-1.png" alt="Dreamy Joe book 1">
@@ -496,12 +458,11 @@
   </div>
 
   <script>
-    // Set these to your Amazon author/series pages (top buttons).
+    // Set these to your Amazon author/series pages when ready.
     const AMAZON_UK_HOME = "#";
     const AMAZON_US_HOME = "#";
 
-    // Per-book links: replace each with your actual UK/US book URLs when live.
-    // Keys 1-8 correspond to your assets-covers-1.png ... assets-covers-8.png
+    // Per-book links: replace with your actual UK/US book URLs when live.
     const BOOK_LINKS = {
       1: { uk: "#", us: "#" }, // Anxious Ant
       2: { uk: "#", us: "#" }, // Cheery Croc
@@ -513,15 +474,9 @@
       8: { uk: "#", us: "#" }  // Tolerant Tiger
     };
 
-    // Wire top + hero buttons
-    const setHref = (id, url) => {
-      const el = document.getElementById(id);
-      if (el) el.href = url;
-    };
-    setHref("topUk",  AMAZON_UK_HOME);
-    setHref("heroUk", AMAZON_UK_HOME);
-    setHref("topUs",  AMAZON_US_HOME);
-    setHref("heroUs", AMAZON_US_HOME);
+    // Wire hero buttons
+    document.getElementById("heroUk").href = AMAZON_UK_HOME;
+    document.getElementById("heroUs").href = AMAZON_US_HOME;
 
     // Footer year
     document.getElementById("y").textContent = new Date().getFullYear();
@@ -542,7 +497,6 @@
         emailHint.textContent = "Copied!";
         setTimeout(() => emailHint.textContent = old, 1400);
       }catch(e){
-        // fallback: show the email
         const old = emailHint.textContent;
         emailHint.textContent = "Copy failed";
         setTimeout(() => emailHint.textContent = old, 1400);
