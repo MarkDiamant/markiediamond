@@ -22,7 +22,6 @@
       --gold:#fbbf24;
       --radius:18px;
     }
-
     *{box-sizing:border-box}
 
     body{
@@ -34,7 +33,6 @@
       overflow-x:hidden;
     }
 
-    /* Stronger dusk band at top (still light overall) */
     .dusk{
       position:fixed;
       inset:0;
@@ -46,7 +44,6 @@
         radial-gradient(900px 480px at 20% 10%, rgba(167, 139, 250, .16), transparent 60%);
     }
 
-    /* Stars (more visible, but still subtle) */
     .stars{
       position:fixed;
       inset:0;
@@ -64,7 +61,6 @@
               mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,.9) 30%, rgba(0,0,0,0) 55%);
     }
 
-    /* Clouds */
     .cloud{
       position:fixed;
       width:440px; height:170px;
@@ -91,7 +87,6 @@
 
     .wrap{max-width:1150px; margin:0 auto; padding:22px}
 
-    /* Header */
     .top{
       display:flex;
       justify-content:space-between;
@@ -100,7 +95,7 @@
       margin-bottom:14px;
     }
     .brand{
-      font-size:34px; /* bigger */
+      font-size:34px;
       font-weight:700;
       background:linear-gradient(90deg,var(--pink),var(--lav),var(--blue));
       -webkit-background-clip:text;
@@ -108,7 +103,6 @@
       color:transparent;
     }
 
-    /* Hero */
     .hero{
       display:grid;
       grid-template-columns:1.1fr .9fr;
@@ -119,19 +113,12 @@
       background:var(--card);
       border-radius:var(--radius);
       box-shadow:var(--shadow);
-      padding:26px; /* slightly bigger to match larger type */
+      padding:26px;
     }
 
-    /* HERO TEXT SIZES +30-40% */
-    .tagline{
-      font-size:20px;           /* was 16 */
-      color:var(--muted);
-      margin-bottom:12px;
-      font-weight:700;
-    }
     h1{
       margin:6px 0 10px;
-      font-size:72px;           /* was 54 */
+      font-size:72px;
       line-height:1.02;
       background:linear-gradient(90deg,var(--pink),var(--lav),var(--blue),var(--mint));
       -webkit-background-clip:text;
@@ -139,9 +126,17 @@
       color:transparent;
     }
 
+    /* moved author line under title */
+    .byline{
+      font-size:18px;
+      color:var(--muted);
+      font-weight:700;
+      margin:0 0 10px;
+    }
+
     .hook{
-      margin:12px 0 12px;
-      font-size:25px;           /* was 19 */
+      margin:10px 0 12px;
+      font-size:25px;
       font-weight:700;
       color:#0f172a;
       display:inline-flex;
@@ -154,17 +149,24 @@
     }
 
     .desc{
-      font-size:20px;           /* was 15.5 */
+      font-size:20px;
       margin:0 0 12px;
       color:#334155;
       line-height:1.42;
     }
     .desc strong{color:#0f172a}
 
-    .heroBtns{display:flex; gap:14px; flex-wrap:wrap; margin-top:14px}
+    /* centre the buttons */
+    .heroBtns{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:14px;
+      justify-content:center;
+    }
 
     .btn{
-      padding:14px 22px;        /* slightly bigger */
+      padding:14px 22px;
       border-radius:16px;
       font-weight:700;
       text-decoration:none;
@@ -172,6 +174,8 @@
       color:#fff;
       transition:transform .08s ease, filter .12s ease;
       font-size:16px;
+      min-width:190px;
+      text-align:center;
     }
     .btn:hover{transform:translateY(-1px); filter:brightness(1.02)}
     .btn:active{transform:translateY(0px); filter:brightness(.98)}
@@ -181,7 +185,7 @@
     .subcta{
       margin-top:14px;
       color:var(--muted);
-      font-size:18px;           /* was 14.5 */
+      font-size:18px;
       line-height:1.35;
       font-weight:700;
     }
@@ -200,7 +204,6 @@
       display:block;
     }
 
-    /* Covers grid */
     .covers{
       margin-top:18px;
       display:grid;
@@ -257,7 +260,6 @@
       }
     }
 
-    /* Quote + contact */
     .quote{
       margin:28px 0 0;
       display:grid;
@@ -271,10 +273,10 @@
       text-shadow:0 6px 18px rgba(251,191,36,.22);
     }
     .quoteText{
-      font-size:18px;
+      font-size:17px; /* slightly smaller */
       margin:10px 0 6px;
       color:#0f172a;
-      line-height:1.35;
+      line-height:1.32;
     }
     .quoteBy{
       color:var(--muted);
@@ -284,9 +286,9 @@
 
     .contactBio{
       margin:10px 0 14px;
-      font-size:15.5px;
+      font-size:15px; /* slightly smaller */
       color:#334155;
-      line-height:1.45;
+      line-height:1.38;
       font-weight:500;
     }
 
@@ -324,8 +326,10 @@
       h1{font-size:56px}
       .hook{font-size:21px}
       .desc{font-size:17px}
-      .tagline{font-size:18px}
+      .byline{font-size:16px}
       .subcta{font-size:16px}
+      .btn{min-width:0; width:auto}
+      .heroBtns{justify-content:flex-start}
     }
   </style>
 </head>
@@ -346,8 +350,8 @@
 
     <div class="hero">
       <div class="card">
-        <div class="tagline">By Markie Diamond — creating gentle, rhyming animal adventures for little dreamers.</div>
         <h1>Dreamy Joe</h1>
+        <div class="byline">By Markie Diamond — creating gentle, rhyming animal adventures for little dreamers.</div>
 
         <div class="hook">
           Bedtime stories children ask for again and again — and parents love reading too
@@ -478,36 +482,30 @@
   </div>
 
   <script>
-    // Set these to your Amazon author/series pages when ready.
     const AMAZON_UK_HOME = "#";
     const AMAZON_US_HOME = "#";
 
-    // Per-book links: replace with your actual UK/US book URLs when live.
     const BOOK_LINKS = {
-      1: { uk: "#", us: "#" }, // Anxious Ant
-      2: { uk: "#", us: "#" }, // Cheery Croc
-      3: { uk: "#", us: "#" }, // Daring Dolphin
-      4: { uk: "#", us: "#" }, // Easy Elephant
-      5: { uk: "#", us: "#" }, // Grumpy Giraffe
-      6: { uk: "#", us: "#" }, // Graceful Gorilla
-      7: { uk: "#", us: "#" }, // Patient Penguin
-      8: { uk: "#", us: "#" }  // Tolerant Tiger
+      1: { uk: "#", us: "#" },
+      2: { uk: "#", us: "#" },
+      3: { uk: "#", us: "#" },
+      4: { uk: "#", us: "#" },
+      5: { uk: "#", us: "#" },
+      6: { uk: "#", us: "#" },
+      7: { uk: "#", us: "#" },
+      8: { uk: "#", us: "#" }
     };
 
-    // Wire hero buttons
     document.getElementById("heroUk").href = AMAZON_UK_HOME;
     document.getElementById("heroUs").href = AMAZON_US_HOME;
 
-    // Footer year
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    // Smooth scroll for "Get in touch"
     document.getElementById("getInTouch").addEventListener("click", (e) => {
       e.preventDefault();
       document.getElementById("contact").scrollIntoView({ behavior: "smooth", block: "start" });
     });
 
-    // Copy email with revert
     const emailBtn = document.getElementById("emailBtn");
     const emailHint = document.getElementById("emailHint");
     emailBtn.addEventListener("click", async () => {
@@ -523,7 +521,6 @@
       }
     });
 
-    // Wire per-book overlay links
     document.querySelectorAll(".cover").forEach(cover => {
       const n = cover.getAttribute("data-book");
       const links = BOOK_LINKS[n];
