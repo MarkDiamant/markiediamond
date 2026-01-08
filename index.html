@@ -127,7 +127,6 @@
       color:transparent;
     }
 
-    /* moved author line under title */
     .byline{
       font-size:18px;
       color:var(--muted);
@@ -157,7 +156,6 @@
     }
     .desc strong{color:#0f172a}
 
-    /* centre the buttons */
     .heroBtns{
       display:flex;
       gap:14px;
@@ -251,16 +249,6 @@
     .overlay .ukBtn{background:linear-gradient(135deg,var(--pink),var(--lav))}
     .overlay .usBtn{background:linear-gradient(135deg,var(--blue),var(--mint))}
 
-    @media (hover:none){
-      .overlay{
-        opacity:1;
-        transform:none;
-        pointer-events:auto;
-        position:static;
-        margin:10px 10px 12px;
-      }
-    }
-
     .quote{
       margin:28px 0 0;
       display:grid;
@@ -274,7 +262,7 @@
       text-shadow:0 6px 18px rgba(251,191,36,.22);
     }
     .quoteText{
-      font-size:17px; /* slightly smaller */
+      font-size:17px;
       margin:10px 0 6px;
       color:#0f172a;
       line-height:1.32;
@@ -287,7 +275,7 @@
 
     .contactBio{
       margin:10px 0 14px;
-      font-size:15px; /* slightly smaller */
+      font-size:15px;
       color:#334155;
       line-height:1.38;
       font-weight:500;
@@ -320,6 +308,7 @@
       font-weight:700;
     }
 
+    /* MOBILE ONLY FIXES — desktop unchanged */
     @media(max-width:900px){
       .hero{grid-template-columns:1fr}
       .quote{grid-template-columns:1fr}
@@ -331,6 +320,45 @@
       .subcta{font-size:16px}
       .btn{min-width:0; width:auto}
       .heroBtns{justify-content:flex-start}
+
+      /* Make sure nothing forces horizontal scroll */
+      html, body{overflow-x:hidden}
+
+      /* Cover buttons: smaller and below cover on mobile */
+      .overlay{
+        opacity:1;
+        transform:none;
+        pointer-events:auto;
+        position:static;
+        margin:10px 10px 12px;
+        gap:8px;
+      }
+      .overlay a{
+        padding:8px 10px;
+        border-radius:12px;
+        font-size:12px;
+        box-shadow:0 10px 18px rgba(0,0,0,.14);
+      }
+
+      /* Contact: stack label + email so it never widens the page */
+      .contactBtn{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:6px;
+        white-space:normal;
+      }
+      .contactBtn .label{white-space:normal}
+      .contactBtn .email{
+        width:100%;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+      }
+      .contactBtn .hint{
+        width:100%;
+        text-align:left;
+        white-space:normal;
+      }
     }
   </style>
 </head>
@@ -468,8 +496,8 @@
         </div>
 
         <button class="contactBtn" id="emailBtn" type="button">
-          <span style="display:flex; gap:10px; align-items:center; min-width:0;">
-            <span class="label">Email Markie —</span>
+          <span style="display:flex; flex-direction:column; gap:2px; min-width:0; width:100%;">
+            <span class="label">Email Markie</span>
             <span class="email">markie@markiediamond.com</span>
           </span>
           <span class="hint" id="emailHint">Click to copy</span>
@@ -483,6 +511,14 @@
   </div>
 
   <script>
+    // Stop placeholder links (#) from jumping to top (mobile + desktop)
+    document.addEventListener("click", (e) => {
+      const a = e.target.closest("a");
+      if (!a) return;
+      const href = a.getAttribute("href");
+      if (href === "#") e.preventDefault();
+    });
+
     const AMAZON_UK_HOME = "#";
     const AMAZON_US_HOME = "#";
 
