@@ -6,23 +6,15 @@
   <title>Dreamy Joe | Markie Diamond</title>
   <meta name="description" content="Dreamy Joe – rhyming bedtime animal adventures with gentle life lessons. By Markie Diamond.">
 
-  <!-- Favicon -->
   <link rel="icon" href="favicon.png" type="image/png">
-
-  <!-- Social preview (optional but nice) -->
-  <meta property="og:title" content="Dreamy Joe | Markie Diamond">
-  <meta property="og:description" content="Gentle, rhyming animal adventures for little dreamers.">
-  <meta property="og:image" content="assets-covers-1.png">
-  <meta property="og:type" content="website">
 
   <style>
     :root{
-      --bg1:#b6c7ff;
-      --bg2:#f7c0d8;
-      --card:#ffffffcc;
-      --card2:#ffffffb8;
       --ink:#1b1d2a;
       --muted:#56607a;
+
+      --card:#ffffffcc;
+      --card2:#ffffffb8;
       --shadow:0 18px 40px rgba(18, 25, 55, .18);
       --shadow2:0 12px 24px rgba(18, 25, 55, .14);
       --radius:26px;
@@ -31,62 +23,57 @@
       --blue:#4f8cff;
       --teal:#20c6a8;
       --navy:#1f2a44;
-
-      --btnText:#ffffff;
-      --outline:#00000010;
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color:var(--ink);
-      background:
-        radial-gradient(900px 520px at 20% 15%, rgba(255,255,255,.55), transparent 55%),
-        radial-gradient(760px 460px at 78% 16%, rgba(255,255,255,.42), transparent 60%),
-        linear-gradient(160deg, #7b86d6 0%, var(--bg1) 28%, #e8c5ef 60%, var(--bg2) 100%);
       overflow-x:hidden;
+
+      /* BACKGROUND (restored: light sky + soft clouds feel) */
+      background:
+        radial-gradient(900px 520px at 18% 14%, rgba(255,255,255,.55), transparent 58%),
+        radial-gradient(760px 460px at 82% 18%, rgba(255,255,255,.45), transparent 62%),
+        linear-gradient(180deg, #8f9ae0 0%, #b8c8ff 32%, #ead0f0 70%, #f6c1d7 100%);
     }
 
-    /* Stars */
+    /* Stars (subtle, visible, mainly towards top) */
     .stars{
       position:fixed;
       inset:0;
       pointer-events:none;
-      opacity:.45;
+      opacity:.55;
       background-image:
-        radial-gradient(2px 2px at 20% 18%, rgba(255,255,255,.95) 50%, transparent 55%),
-        radial-gradient(1px 1px at 34% 11%, rgba(255,255,255,.85) 50%, transparent 55%),
-        radial-gradient(1px 1px at 53% 20%, rgba(255,255,255,.9) 50%, transparent 55%),
-        radial-gradient(2px 2px at 71% 12%, rgba(255,255,255,.85) 50%, transparent 55%),
-        radial-gradient(1px 1px at 86% 18%, rgba(255,255,255,.9) 50%, transparent 55%),
-        radial-gradient(1px 1px at 12% 34%, rgba(255,255,255,.75) 50%, transparent 55%),
-        radial-gradient(2px 2px at 42% 33%, rgba(255,255,255,.7) 50%, transparent 55%),
-        radial-gradient(1px 1px at 62% 30%, rgba(255,255,255,.75) 50%, transparent 55%),
-        radial-gradient(2px 2px at 90% 31%, rgba(255,255,255,.7) 50%, transparent 55%);
-      filter: blur(.15px);
+        radial-gradient(2px 2px at 16% 10%, rgba(255,255,255,.95) 55%, transparent 60%),
+        radial-gradient(1px 1px at 26% 14%, rgba(255,255,255,.85) 55%, transparent 60%),
+        radial-gradient(1px 1px at 44% 9%, rgba(255,255,255,.9) 55%, transparent 60%),
+        radial-gradient(2px 2px at 62% 13%, rgba(255,255,255,.85) 55%, transparent 60%),
+        radial-gradient(1px 1px at 78% 10%, rgba(255,255,255,.9) 55%, transparent 60%),
+        radial-gradient(1px 1px at 90% 16%, rgba(255,255,255,.8) 55%, transparent 60%);
+      filter: blur(.2px);
     }
 
-    /* Clouds */
+    /* Clouds (restored to “cloudy” look) */
     .cloud{
       position:fixed;
-      width:520px;
-      height:240px;
-      background:rgba(255,255,255,.30);
-      border-radius:200px;
-      filter: blur(.2px);
-      box-shadow:
-        80px 50px 0 0 rgba(255,255,255,.22),
-        170px 10px 0 0 rgba(255,255,255,.18),
-        240px 70px 0 0 rgba(255,255,255,.19);
+      width:560px;
+      height:260px;
+      background:rgba(255,255,255,.28);
+      border-radius:220px;
       pointer-events:none;
-      opacity:.65;
+      opacity:.70;
+      box-shadow:
+        95px 55px 0 0 rgba(255,255,255,.22),
+        200px 15px 0 0 rgba(255,255,255,.18),
+        280px 80px 0 0 rgba(255,255,255,.20);
     }
-    .cloud.c1{top:90px; left:-140px; transform:scale(1.08)}
-    .cloud.c2{top:260px; right:-160px; transform:scale(.95)}
-    .cloud.c3{bottom:140px; left:-200px; transform:scale(1.18); opacity:.55}
-    .cloud.c4{bottom:60px; right:-220px; transform:scale(1.05); opacity:.52}
+    .cloud.c1{top:90px; left:-180px; transform:scale(1.10)}
+    .cloud.c2{top:250px; right:-220px; transform:scale(.98)}
+    .cloud.c3{bottom:150px; left:-240px; transform:scale(1.18); opacity:.55}
+    .cloud.c4{bottom:60px; right:-260px; transform:scale(1.10); opacity:.50}
 
     .wrap{
       width:min(1160px, calc(100% - 40px));
@@ -113,6 +100,7 @@
     }
     .brand .m{color:var(--pink)}
     .brand .d{color:#7a6cff}
+
     .topBtns{
       display:flex;
       gap:10px;
@@ -157,7 +145,8 @@
       padding:22px;
       backdrop-filter: blur(10px);
     }
-    .heroLeft .kicker{
+
+    .kicker{
       font-weight:900;
       color:#2c2f40;
       opacity:.92;
@@ -176,26 +165,19 @@
       color:transparent;
       text-shadow: 0 14px 28px rgba(0,0,0,.10);
     }
+
+    /* Sparkle forced to stay inline */
     .bigLine{
       font-size:22px;
       font-weight:950;
       margin:0 0 10px;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
+      white-space:normal;
     }
-    .sparkle{
-      display:inline-flex;
-      width:26px;
-      height:26px;
-      align-items:center;
-      justify-content:center;
-      border-radius:10px;
-      background:rgba(255,255,255,.55);
-      border:1px solid rgba(255,255,255,.70);
-      box-shadow: 0 10px 18px rgba(0,0,0,.10);
+    .bigLine .nowrap{
+      white-space:nowrap;
+      display:inline-block;
     }
+
     .p{
       margin:0 0 12px;
       color:var(--muted);
@@ -204,11 +186,12 @@
       font-weight:650;
     }
     .p strong{color:#2c2f40}
+
     .ctaRow{
       display:flex;
       gap:12px;
       align-items:center;
-      justify-content:center; /* centred as requested */
+      justify-content:center;
       margin:12px 0 12px;
       flex-wrap:wrap;
     }
@@ -220,9 +203,9 @@
       font-size:16px;
       cursor:pointer;
       text-decoration:none;
-      color:var(--btnText);
+      color:#fff;
       box-shadow:var(--shadow2);
-      transition:transform .12s ease, box-shadow .12s ease, filter .12s ease;
+      transition:transform .12s ease, box-shadow .12s ease;
       display:inline-flex;
       align-items:center;
       justify-content:center;
@@ -231,7 +214,7 @@
     .cta:hover{transform:translateY(-1px); box-shadow:0 18px 34px rgba(18,25,55,.18)}
     .cta.uk{background: linear-gradient(90deg, #ff5fb2, #b27bff)}
     .cta.us{background: linear-gradient(90deg, #4f8cff, #20c6a8)}
-    .cta.soon{filter:saturate(.6); opacity:.75; cursor:not-allowed}
+    .cta.soon{opacity:.75; cursor:not-allowed; filter:saturate(.7)}
 
     .smallNote{
       margin:0;
@@ -271,6 +254,96 @@
       height:auto;
       display:block;
       border-radius:16px;
+    }
+
+    /* Bundle card */
+    .bundleWrap{
+      margin-top:14px;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.70);
+      background:rgba(255,255,255,.42);
+      padding:14px;
+    }
+    .bundleHead{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:8px;
+    }
+    .bundleTitle{
+      font-weight:1000;
+      font-size:16px;
+      margin:0;
+      color:#2c2f40;
+    }
+    .status{
+      font-size:12px;
+      font-weight:950;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,.10);
+      background:rgba(255,255,255,.60);
+      color:#2c2f40;
+      white-space:nowrap;
+    }
+
+    .bundleBody{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      align-items:center;
+    }
+
+    /* IMPORTANT: no white box behind bundle image */
+    .bundleImg{
+      width:100%;
+      display:block;
+      background:transparent !important;
+      border-radius:0;
+      box-shadow:none;
+    }
+
+    .bundleDesc{
+      margin:0 0 10px;
+      color:#3a3f58;
+      font-weight:750;
+      line-height:1.35;
+      font-size:14px;
+    }
+    .buyCol{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      align-items:stretch;
+      justify-content:center;
+    }
+    .buyBtn{
+      border:0;
+      border-radius:16px;
+      padding:12px 14px;
+      font-weight:1000;
+      cursor:pointer;
+      text-decoration:none;
+      color:#fff;
+      text-align:center;
+      box-shadow: 0 14px 26px rgba(0,0,0,.18);
+    }
+    .buyBtn.uk{background: linear-gradient(90deg, #ff5fb2, #b27bff)}
+    .buyBtn.us{background: linear-gradient(90deg, #4f8cff, #20c6a8)}
+    .buyBtn.bulk{background: rgba(31,42,68,.92)}
+    .bundleNote{
+      margin-top:10px;
+      color:#3a3f58;
+      font-weight:800;
+      font-size:13px;
+    }
+    .bundleNote a{
+      color:#2c2f40;
+      font-weight:1000;
+      text-decoration:none;
+      border-bottom:2px solid rgba(44,47,64,.18);
     }
 
     /* Grid */
@@ -316,22 +389,12 @@
       justify-content:space-between;
       gap:10px;
     }
-    .status{
-      font-size:12px;
-      font-weight:950;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(0,0,0,.10);
-      background:rgba(255,255,255,.60);
-      color:#2c2f40;
-      white-space:nowrap;
-    }
     .status.soon{
       background:rgba(255,255,255,.45);
       color:#51608a;
     }
 
-    /* Per-book overlay buttons */
+    /* Overlay buttons */
     .overlay{
       position:absolute;
       inset:auto 12px 12px 12px;
@@ -344,6 +407,7 @@
       pointer-events:none;
     }
     .book:hover .overlay{opacity:1; transform: translateY(0); pointer-events:auto}
+
     .miniBtn{
       appearance:none;
       border:0;
@@ -361,82 +425,6 @@
     .miniBtn.uk{background: rgba(255,95,178,.92)}
     .miniBtn.us{background: rgba(79,140,255,.92)}
     .miniBtn.soon{opacity:.70; cursor:not-allowed}
-
-    /* Starter bundle card */
-    .bundleWrap{
-      margin-top:14px;
-      border-radius:22px;
-      border:1px solid rgba(255,255,255,.70);
-      background:rgba(255,255,255,.42);
-      padding:14px;
-    }
-    .bundleHead{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-bottom:8px;
-    }
-    .bundleTitle{
-      font-weight:1000;
-      font-size:16px;
-      margin:0;
-      color:#2c2f40;
-    }
-    .bundleBody{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:12px;
-      align-items:center;
-    }
-    .bundleImg{
-      width:100%;
-      border-radius:14px;
-      box-shadow:0 14px 28px rgba(0,0,0,.16);
-      background:transparent;
-      display:block;
-    }
-    .bundleDesc{
-      margin:0 0 10px;
-      color:#3a3f58;
-      font-weight:750;
-      line-height:1.35;
-      font-size:14px;
-    }
-    .buyCol{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      align-items:stretch;
-      justify-content:center;
-    }
-    .buyBtn{
-      border:0;
-      border-radius:16px;
-      padding:12px 14px;
-      font-weight:1000;
-      cursor:pointer;
-      text-decoration:none;
-      color:#fff;
-      text-align:center;
-      box-shadow: 0 14px 26px rgba(0,0,0,.18);
-    }
-    .buyBtn.uk{background: linear-gradient(90deg, #ff5fb2, #b27bff)}
-    .buyBtn.us{background: linear-gradient(90deg, #4f8cff, #20c6a8)}
-    .buyBtn.bulk{background: rgba(31,42,68,.92)}
-    .bundleNote{
-      margin-top:10px;
-      color:#3a3f58;
-      font-weight:800;
-      font-size:13px;
-    }
-    .bundleNote a{
-      color:#2c2f40;
-      font-weight:1000;
-      text-decoration:none;
-      border-bottom:2px solid rgba(44,47,64,.18);
-    }
 
     /* Bottom row */
     .bottom{
@@ -486,12 +474,11 @@
       background:rgba(255,255,255,.55);
       border:1px solid rgba(0,0,0,.08);
     }
-    .copyRow strong{font-weight:1000}
     .emailLink{
       color:#2d74ff;
       font-weight:1000;
       text-decoration:none;
-      word-break:break-all;
+      word-break:break-word;
     }
     .copyBtn{
       margin-left:auto;
@@ -504,7 +491,6 @@
       cursor:pointer;
       box-shadow: 0 12px 22px rgba(0,0,0,.12);
     }
-    .copyBtn:active{transform: translateY(1px)}
     .copied{
       font-weight:1000;
       color:#2a7a4a;
@@ -521,46 +507,28 @@
 
     /* Responsive */
     @media (max-width: 980px){
-      .hero{grid-template-columns:1fr; }
+      .hero{grid-template-columns:1fr;}
       .grid{grid-template-columns: repeat(2, 1fr);}
       .bottom{grid-template-columns:1fr;}
       .title{font-size:56px}
       .brand{font-size:26px}
     }
 
-    /* Mobile-only fixes requested */
+    /* Mobile-only (keeps desktop unchanged) */
     @media (max-width: 560px){
+      body{overflow-x:hidden}
       .wrap{width:calc(100% - 22px)}
       .topbar{flex-direction:column; align-items:flex-start}
       .topBtns{width:100%; justify-content:center}
       .pill{flex:1; justify-content:center}
 
-      .card{padding:18px}
-      .title{font-size:48px}
-      .bigLine{font-size:20px}
-      .p{font-size:17px}
+      /* Overlay buttons smaller on mobile so they don't cover covers */
+      .overlay{opacity:1; transform:none; pointer-events:auto}
+      .miniBtn{min-width:92px; padding:9px 10px; border-radius:14px; font-size:14px}
 
-      /* Keep site from horizontally scrolling on mobile */
-      body{overflow-x:hidden}
-      .copyRow{gap:8px}
+      /* Prevent contact area from forcing horizontal scroll */
       .copyBtn{margin-left:0}
-
-      /* Make overlay buttons smaller & prevent them covering the cover too much */
-      .overlay{
-        opacity:1;
-        transform:none;
-        pointer-events:auto;
-      }
-      .miniBtn{
-        min-width:92px;
-        padding:9px 10px;
-        border-radius:14px;
-        font-size:14px;
-      }
-
-      /* Contact layout: keep it within card */
-      .emailLink{display:inline-block; max-width:100%}
-      .copyRow{justify-content:space-between}
+      .copyRow{justify-content:space-between; gap:8px}
     }
   </style>
 </head>
@@ -574,11 +542,8 @@
 
   <div class="wrap">
     <div class="topbar">
-      <div class="brand">
-        <span class="m">Markie</span> <span class="d">Diamond</span>
-      </div>
+      <div class="brand"><span class="m">Markie</span> <span class="d">Diamond</span></div>
 
-      <!-- Header buttons (keep simple; US is "soon" until you have US links) -->
       <div class="topBtns">
         <a class="pill uk" href="https://www.amazon.co.uk/dp/106827400X" target="_blank" rel="noopener">Amazon UK</a>
         <span class="pill us soon" aria-disabled="true" title="US links coming soon">Amazon US (soon)</span>
@@ -586,14 +551,14 @@
     </div>
 
     <div class="hero">
-      <div class="card heroLeft">
+      <div class="card">
         <p class="kicker">By Markie Diamond — creating gentle, rhyming animal adventures for little dreamers.</p>
 
         <h1 class="title">Dreamy Joe</h1>
 
         <p class="bigLine">
           Bedtime stories children ask for again and again — and parents love reading too
-          <span class="sparkle" aria-hidden="true">✨</span>
+          <span class="nowrap">✨</span>
         </p>
 
         <p class="p">
@@ -610,15 +575,13 @@
           <span class="cta us soon" aria-disabled="true" title="US links coming soon">Amazon US (soon)</span>
         </div>
 
-        <!-- Starter bundle card -->
-        <div class="bundleWrap" aria-label="Starter Set">
+        <div class="bundleWrap">
           <div class="bundleHead">
             <p class="bundleTitle">Dreamy Joe – Starter Set (Books 1–4)</p>
             <span class="status">In stock</span>
           </div>
 
           <div class="bundleBody">
-            <!-- Use your transparent PNG here -->
             <img class="bundleImg" src="Bundle-1-4.png" alt="Dreamy Joe – Starter Set (Books 1–4)">
 
             <div class="buyCol">
@@ -626,16 +589,13 @@
                 Four gentle, rhyming bedtime stories in one beautiful bundle — perfect as a gift set or bedtime pack for ages 3–6.
               </p>
 
-              <!-- Stripe Payment Links (LIVE) -->
               <a class="buyBtn uk" href="https://buy.stripe.com/28E7sEdNJbz0a1EdV58so00" target="_blank" rel="noopener">Buy Starter Set (UK)</a>
               <a class="buyBtn us" href="https://buy.stripe.com/9B6dR2bFBauW8XA5oz8so01" target="_blank" rel="noopener">Buy Starter Set (US)</a>
 
-              <!-- Bulk / Schools -->
               <a class="buyBtn bulk" href="#contact" id="bulkScroll">Bulk / Schools</a>
             </div>
           </div>
 
-          <!-- Optional single-line note (kept minimal) -->
           <div class="bundleNote">
             Bulk or school orders? <a href="#contact" id="bulkScroll2">Email Markie</a>.
           </div>
@@ -656,112 +616,79 @@
 
     <div class="sectionTitle">Available now (Books 1–4)</div>
     <div class="grid">
-      <!-- 1 -->
       <div class="book">
         <img class="cover" src="assets-covers-1.png" alt="Dreamy Joe & Anxious Ant cover">
         <div class="overlay">
           <a class="miniBtn uk" href="https://www.amazon.co.uk/dp/106827400X" target="_blank" rel="noopener">Amazon UK</a>
-          <span class="miniBtn us soon" aria-disabled="true" title="US links coming soon">US (soon)</span>
+          <span class="miniBtn us soon" aria-disabled="true">US (soon)</span>
         </div>
-        <div class="bookLabel">
-          <span>Anxious Ant</span>
-          <span class="status">Live</span>
-        </div>
+        <div class="bookLabel"><span>Anxious Ant</span><span class="status">Live</span></div>
       </div>
 
-      <!-- 2 -->
       <div class="book">
         <img class="cover" src="assets-covers-2.png" alt="Dreamy Joe & Cheery Croc cover">
         <div class="overlay">
           <a class="miniBtn uk" href="https://www.amazon.co.uk/dp/1068274018" target="_blank" rel="noopener">Amazon UK</a>
-          <span class="miniBtn us soon" aria-disabled="true" title="US links coming soon">US (soon)</span>
+          <span class="miniBtn us soon" aria-disabled="true">US (soon)</span>
         </div>
-        <div class="bookLabel">
-          <span>Cheery Croc</span>
-          <span class="status">Live</span>
-        </div>
+        <div class="bookLabel"><span>Cheery Croc</span><span class="status">Live</span></div>
       </div>
 
-      <!-- 3 -->
       <div class="book">
         <img class="cover" src="assets-covers-3.png" alt="Dreamy Joe & Daring Dolphin cover">
         <div class="overlay">
-          <!-- No UK link yet (leave as soon) -->
-          <span class="miniBtn uk soon" aria-disabled="true" title="Link coming soon">UK (soon)</span>
-          <span class="miniBtn us soon" aria-disabled="true" title="US links coming soon">US (soon)</span>
+          <span class="miniBtn uk soon" aria-disabled="true">UK (soon)</span>
+          <span class="miniBtn us soon" aria-disabled="true">US (soon)</span>
         </div>
-        <div class="bookLabel">
-          <span>Daring Dolphin</span>
-          <span class="status soon">Updating</span>
-        </div>
+        <div class="bookLabel"><span>Daring Dolphin</span><span class="status soon">Updating</span></div>
       </div>
 
-      <!-- 4 -->
       <div class="book">
         <img class="cover" src="assets-covers-4.png" alt="Dreamy Joe & Easy Elephant cover">
         <div class="overlay">
           <a class="miniBtn uk" href="https://www.amazon.co.uk/dp/1068274034" target="_blank" rel="noopener">Amazon UK</a>
-          <span class="miniBtn us soon" aria-disabled="true" title="US links coming soon">US (soon)</span>
+          <span class="miniBtn us soon" aria-disabled="true">US (soon)</span>
         </div>
-        <div class="bookLabel">
-          <span>Easy Elephant</span>
-          <span class="status">Live</span>
-        </div>
+        <div class="bookLabel"><span>Easy Elephant</span><span class="status">Live</span></div>
       </div>
     </div>
 
     <div class="sectionTitle">Coming soon (Books 5–8)</div>
     <div class="grid">
-      <!-- 5 -->
       <div class="book">
         <img class="cover" src="assets-covers-6.png" alt="Dreamy Joe & Graceful Gorilla cover">
         <div class="overlay">
           <span class="miniBtn uk soon" aria-disabled="true">UK (soon)</span>
           <span class="miniBtn us soon" aria-disabled="true">US (soon)</span>
         </div>
-        <div class="bookLabel">
-          <span>Graceful Gorilla</span>
-          <span class="status soon">Coming soon</span>
-        </div>
+        <div class="bookLabel"><span>Graceful Gorilla</span><span class="status soon">Coming soon</span></div>
       </div>
 
-      <!-- 6 -->
       <div class="book">
         <img class="cover" src="assets-covers-5.png" alt="Dreamy Joe & Grumpy Giraffe cover">
         <div class="overlay">
           <span class="miniBtn uk soon" aria-disabled="true">UK (soon)</span>
           <span class="miniBtn us soon" aria-disabled="true">US (soon)</span>
         </div>
-        <div class="bookLabel">
-          <span>Grumpy Giraffe</span>
-          <span class="status soon">Coming soon</span>
-        </div>
+        <div class="bookLabel"><span>Grumpy Giraffe</span><span class="status soon">Coming soon</span></div>
       </div>
 
-      <!-- 7 -->
       <div class="book">
         <img class="cover" src="assets-covers-7.png" alt="Dreamy Joe & Patient Penguin cover">
         <div class="overlay">
           <span class="miniBtn uk soon" aria-disabled="true">UK (soon)</span>
           <span class="miniBtn us soon" aria-disabled="true">US (soon)</span>
         </div>
-        <div class="bookLabel">
-          <span>Patient Penguin</span>
-          <span class="status soon">Coming soon</span>
-        </div>
+        <div class="bookLabel"><span>Patient Penguin</span><span class="status soon">Coming soon</span></div>
       </div>
 
-      <!-- 8 -->
       <div class="book">
         <img class="cover" src="assets-covers-8.png" alt="Dreamy Joe & Tolerant Tiger cover">
         <div class="overlay">
           <span class="miniBtn uk soon" aria-disabled="true">UK (soon)</span>
           <span class="miniBtn us soon" aria-disabled="true">US (soon)</span>
         </div>
-        <div class="bookLabel">
-          <span>Tolerant Tiger</span>
-          <span class="status soon">Coming soon</span>
-        </div>
+        <div class="bookLabel"><span>Tolerant Tiger</span><span class="status soon">Coming soon</span></div>
       </div>
     </div>
 
@@ -795,19 +722,16 @@
   </div>
 
   <script>
-    // Smooth scroll helper
     function smoothToContact(e){
       if(e) e.preventDefault();
       const el = document.getElementById("contact");
       if(!el) return;
       el.scrollIntoView({behavior:"smooth", block:"start"});
     }
-
     document.getElementById("contactScroll")?.addEventListener("click", smoothToContact);
     document.getElementById("bulkScroll")?.addEventListener("click", smoothToContact);
     document.getElementById("bulkScroll2")?.addEventListener("click", smoothToContact);
 
-    // Copy email
     const copyBtn = document.getElementById("copyBtn");
     const copied = document.getElementById("copied");
     const email = "markie@markiediamond.com";
@@ -815,33 +739,20 @@
     copyBtn?.addEventListener("click", async () => {
       try{
         await navigator.clipboard.writeText(email);
-        copied.style.display = "inline";
-        copyBtn.textContent = "Copied";
-        setTimeout(() => {
-          copied.style.display = "none";
-          copyBtn.textContent = "Click to copy";
-        }, 1600);
-      }catch(err){
-        // fallback
+      }catch{
         const t = document.createElement("textarea");
         t.value = email;
         document.body.appendChild(t);
         t.select();
         document.execCommand("copy");
         document.body.removeChild(t);
-        copied.style.display = "inline";
-        copyBtn.textContent = "Copied";
-        setTimeout(() => {
-          copied.style.display = "none";
-          copyBtn.textContent = "Click to copy";
-        }, 1600);
       }
-    });
-
-    // Prevent “jump to top” behaviour if someone taps inside a card
-    // (often happens when nested elements trigger default actions)
-    document.querySelectorAll(".book .overlay a").forEach(a=>{
-      a.addEventListener("click", (e)=> e.stopPropagation());
+      copied.style.display = "inline";
+      copyBtn.textContent = "Copied";
+      setTimeout(() => {
+        copied.style.display = "none";
+        copyBtn.textContent = "Click to copy";
+      }, 1600);
     });
   </script>
 </body>
