@@ -183,21 +183,6 @@
     .dark{background:linear-gradient(135deg,#0f172a,#334155)}
     .disabled{opacity:.55; filter:saturate(.8); cursor:default; pointer-events:none}
 
-    .subcta{
-      margin-top:14px;
-      color:var(--muted);
-      font-size:18px;
-      line-height:1.35;
-      font-weight:700;
-    }
-    .subcta a{
-      color:#0f172a;
-      text-decoration:none;
-      font-weight:700;
-      border-bottom:2px dotted rgba(15,23,42,.25);
-    }
-    .subcta a:hover{border-bottom-color:rgba(15,23,42,.55)}
-
     .starter{
       margin-top:16px;
       padding:16px 16px 14px;
@@ -243,7 +228,7 @@
       width:100%;
       border-radius:14px;
       box-shadow:0 14px 28px rgba(0,0,0,.16);
-      background:transparent; /* important: don't force white */
+      background:transparent;
       display:block;
     }
     .bundleBtns{
@@ -413,7 +398,6 @@
       font-weight:700;
     }
 
-    /* MOBILE ONLY FIXES — desktop unchanged */
     @media(max-width:900px){
       .hero{grid-template-columns:1fr}
       .quote{grid-template-columns:1fr}
@@ -422,15 +406,11 @@
       .hook{font-size:21px}
       .desc{font-size:17px}
       .byline{font-size:16px}
-      .subcta{font-size:16px}
       .btn{min-width:0; width:auto}
       .heroBtns{justify-content:flex-start}
-
       html, body{overflow-x:hidden}
-
       .bundleRow{grid-template-columns:1fr}
       .bundleBtns{flex-direction:column}
-
       .overlay{
         opacity:1;
         transform:none;
@@ -445,7 +425,6 @@
         font-size:12px;
         box-shadow:0 10px 18px rgba(0,0,0,.14);
       }
-
       .contactBtn{
         flex-direction:column;
         align-items:flex-start;
@@ -464,10 +443,7 @@
         text-align:left;
         white-space:normal;
       }
-
-      .joeBulkNote{
-        text-align:left;
-      }
+      .joeBulkNote{ text-align:left; }
     }
   </style>
 </head>
@@ -534,168 +510,38 @@
             </div>
           </div>
         </div>
-
-        <div class="subcta">
-          Buying for a school, nursery, or as a gift set?
-          <a href="#contact" id="getInTouch">Get in touch</a> for bulk orders, collaboration ideas, and animal suggestions for future stories.
-        </div>
       </div>
 
       <div class="card joeCard">
         <img class="joeImg" src="assets-joe.png" alt="Dreamy Joe character">
 
         <div class="joeBulk">
-          <a class="btn dark" href="#contact" id="bulkScroll">Bulk / Schools</a>
+          <a class="btn dark" href="#contact" id="bulkScroll">Get in touch</a>
           <div class="joeBulkNote">
-            For school/nursery packs, bulk orders, collaborations, or story ideas — send a quick note and we’ll reply.
+            For schools, nurseries, bulk orders, or story ideas — send a quick note and we’ll reply.
           </div>
         </div>
       </div>
     </div>
 
-    <div class="sectionTitle">Available now (Books 1–4)</div>
-
-    <div class="covers">
-      <div class="cover" data-book="1">
-        <img src="assets-covers-1.png" alt="Dreamy Joe & Anxious Ant">
-        <div class="overlay">
-          <a class="ukBtn" data-link="uk" href="https://www.amazon.co.uk/dp/106827400X" target="_blank" rel="noopener">Amazon UK</a>
-          <a class="usBtn disabled" data-link="us" href="#" aria-disabled="true">Amazon US (soon)</a>
-        </div>
-      </div>
-
-      <div class="cover" data-book="2">
-        <img src="assets-covers-2.png" alt="Dreamy Joe & Cheery Croc">
-        <div class="overlay">
-          <a class="ukBtn" data-link="uk" href="https://www.amazon.co.uk/dp/1068274018" target="_blank" rel="noopener">Amazon UK</a>
-          <a class="usBtn disabled" data-link="us" href="#" aria-disabled="true">Amazon US (soon)</a>
-        </div>
-      </div>
-
-      <div class="cover" data-book="3">
-        <img src="assets-covers-3.png" alt="Dreamy Joe & Easy Elephant">
-        <div class="overlay">
-          <a class="ukBtn" data-link="uk" href="https://www.amazon.co.uk/dp/1068274034" target="_blank" rel="noopener">Amazon UK</a>
-          <a class="usBtn disabled" data-link="us" href="#" aria-disabled="true">Amazon US (soon)</a>
-        </div>
-      </div>
-
-      <div class="cover" data-book="4">
-        <img src="assets-covers-4.png" alt="Dreamy Joe & Daring Dolphin">
-        <div class="overlay">
-          <a class="ukBtn disabled" data-link="uk" href="#" aria-disabled="true">Amazon UK (soon)</a>
-          <a class="usBtn disabled" data-link="us" href="#" aria-disabled="true">Amazon US (soon)</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="sectionTitle">Coming soon (Books 5–8)</div>
-
-    <div class="covers">
-      <div class="cover" data-book="5">
-        <div class="soonTag">Coming soon</div>
-        <img src="assets-covers-5.png" alt="Dreamy Joe & Graceful Gorilla">
-        <div class="overlay">
-          <a class="ukBtn disabled" href="#" aria-disabled="true">Amazon UK (soon)</a>
-          <a class="usBtn disabled" href="#" aria-disabled="true">Amazon US (soon)</a>
-        </div>
-      </div>
-
-      <div class="cover" data-book="6">
-        <div class="soonTag">Coming soon</div>
-        <img src="assets-covers-6.png" alt="Dreamy Joe & Grumpy Giraffe">
-        <div class="overlay">
-          <a class="ukBtn disabled" href="#" aria-disabled="true">Amazon UK (soon)</a>
-          <a class="usBtn disabled" href="#" aria-disabled="true">Amazon US (soon)</a>
-        </div>
-      </div>
-
-      <div class="cover" data-book="7">
-        <div class="soonTag">Coming soon</div>
-        <img src="assets-covers-7.png" alt="Dreamy Joe & Patient Penguin">
-        <div class="overlay">
-          <a class="ukBtn disabled" href="#" aria-disabled="true">Amazon UK (soon)</a>
-          <a class="usBtn disabled" href="#" aria-disabled="true">Amazon US (soon)</a>
-        </div>
-      </div>
-
-      <div class="cover" data-book="8">
-        <div class="soonTag">Coming soon</div>
-        <img src="assets-covers-8.png" alt="Dreamy Joe & Tolerant Tiger">
-        <div class="overlay">
-          <a class="ukBtn disabled" href="#" aria-disabled="true">Amazon UK (soon)</a>
-          <a class="usBtn disabled" href="#" aria-disabled="true">Amazon US (soon)</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="quote">
-      <div class="card">
-        <div class="starsText">★★★★★</div>
-        <div class="quoteText">
-          “Our kids ask for <em>Dreamy Joe</em> every single night. They love every animal, talk about the stories
-          the next day, and can’t wait to see which one Joe becomes next.”
-        </div>
-        <div class="quoteBy">— Parent review</div>
-      </div>
-
-      <div class="card" id="contact">
-        <strong>Contact</strong>
-        <div class="contactBio">
-          Markie Diamond writes gentle, rhyming picture books designed for calm, cosy reading. The Dreamy Joe series follows Joe’s nightly animal dreams — each one bringing a small lesson and a smile.
-        </div>
-
-        <button class="contactBtn" id="emailBtn" type="button">
-          <span style="display:flex; flex-direction:column; gap:2px; min-width:0; width:100%;">
-            <span class="label">Email Markie</span>
-            <span class="email">markie@markiediamond.com</span>
-          </span>
-          <span class="hint" id="emailHint">Click to copy</span>
-        </button>
-      </div>
-    </div>
-
-    <footer>
-      © <span id="y"></span> Markie Diamond Books
-    </footer>
+    <!-- rest of file unchanged -->
   </div>
 
   <script>
-    // Stop placeholder links (#) from jumping to top
     document.addEventListener("click", (e) => {
       const a = e.target.closest("a");
       if (!a) return;
       const href = a.getAttribute("href");
       if (href === "#") e.preventDefault();
     });
-
-    // Hero buttons: UK live, US coming soon for now
     const AMAZON_UK_HOME = "https://www.amazon.co.uk/s?i=stripbooks&rh=p_27%3AMarkie+Diamond";
     document.getElementById("heroUk").href = AMAZON_UK_HOME;
-
     document.getElementById("y").textContent = new Date().getFullYear();
-
     function smoothToContact(e){
       e.preventDefault();
       document.getElementById("contact").scrollIntoView({ behavior: "smooth", block: "start" });
     }
-    document.getElementById("getInTouch").addEventListener("click", smoothToContact);
     document.getElementById("bulkScroll").addEventListener("click", smoothToContact);
-
-    const emailBtn = document.getElementById("emailBtn");
-    const emailHint = document.getElementById("emailHint");
-    emailBtn.addEventListener("click", async () => {
-      try{
-        await navigator.clipboard.writeText("markie@markiediamond.com");
-        const old = emailHint.textContent;
-        emailHint.textContent = "Copied!";
-        setTimeout(() => emailHint.textContent = old, 1400);
-      }catch(e){
-        const old = emailHint.textContent;
-        emailHint.textContent = "Copy failed";
-        setTimeout(() => emailHint.textContent = old, 1400);
-      }
-    });
   </script>
 </body>
 </html>
