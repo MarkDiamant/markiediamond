@@ -5,535 +5,453 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Dreamy Joe | Markie Diamond</title>
   <meta name="description" content="Dreamy Joe – rhyming bedtime animal adventures with gentle life lessons. By Markie Diamond.">
+  <link rel="icon" type="image/png" href="/favicon.png">
 
-  <link rel="icon" href="favicon.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --ink:#1b1d2a;
-      --muted:#56607a;
-
-      --card:#ffffffcc;
-      --card2:#ffffffb8;
-      --shadow:0 18px 40px rgba(18, 25, 55, .18);
-      --shadow2:0 12px 24px rgba(18, 25, 55, .14);
-      --radius:26px;
-
-      --pink:#ff5fb2;
-      --blue:#4f8cff;
-      --teal:#20c6a8;
-      --navy:#1f2a44;
+      --ink:#1f2937;
+      --muted:#4b5563;
+      --card:#ffffff;
+      --shadow:0 18px 40px rgba(0,0,0,.12);
+      --shadow2:0 12px 26px rgba(0,0,0,.16);
+      --pink:#ff5fa2;
+      --blue:#3b82f6;
+      --mint:#34d399;
+      --lav:#a78bfa;
+      --gold:#fbbf24;
+      --radius:18px;
     }
-
     *{box-sizing:border-box}
-    html,body{height:100%}
+
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      font-family:"Fredoka", system-ui, sans-serif;
       color:var(--ink);
-      overflow-x:hidden;
-
-      /* BACKGROUND (restored: light sky + soft clouds feel) */
       background:
-        radial-gradient(900px 520px at 18% 14%, rgba(255,255,255,.55), transparent 58%),
-        radial-gradient(760px 460px at 82% 18%, rgba(255,255,255,.45), transparent 62%),
-        linear-gradient(180deg, #8f9ae0 0%, #b8c8ff 32%, #ead0f0 70%, #f6c1d7 100%);
+        radial-gradient(1200px 700px at 15% 0%, #ffffff 0%, #f7fbff 40%, #fdf4ff 100%);
+      overflow-x:hidden;
     }
 
-    /* Stars (subtle, visible, mainly towards top) */
+    .dusk{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:-4;
+      background:
+        linear-gradient(to bottom, rgba(10, 40, 110, .22) 0%, rgba(10, 40, 110, .08) 22%, rgba(10, 40, 110, 0) 46%),
+        radial-gradient(1200px 520px at 50% 0%, rgba(26, 86, 219, .18), transparent 58%),
+        radial-gradient(900px 480px at 20% 10%, rgba(167, 139, 250, .16), transparent 60%);
+    }
+
     .stars{
       position:fixed;
       inset:0;
       pointer-events:none;
-      opacity:.55;
+      z-index:-3;
       background-image:
-        radial-gradient(2px 2px at 16% 10%, rgba(255,255,255,.95) 55%, transparent 60%),
-        radial-gradient(1px 1px at 26% 14%, rgba(255,255,255,.85) 55%, transparent 60%),
-        radial-gradient(1px 1px at 44% 9%, rgba(255,255,255,.9) 55%, transparent 60%),
-        radial-gradient(2px 2px at 62% 13%, rgba(255,255,255,.85) 55%, transparent 60%),
-        radial-gradient(1px 1px at 78% 10%, rgba(255,255,255,.9) 55%, transparent 60%),
-        radial-gradient(1px 1px at 90% 16%, rgba(255,255,255,.8) 55%, transparent 60%);
-      filter: blur(.2px);
+        radial-gradient(rgba(255,255,255,.95) 1px, transparent 1px),
+        radial-gradient(rgba(255,255,255,.75) 1px, transparent 1px),
+        radial-gradient(rgba(255,255,255,.55) 1px, transparent 1px);
+      background-size: 42px 42px, 70px 70px, 110px 110px;
+      background-position: 0 0, 18px 30px, 45px 14px;
+      opacity:.42;
+      mix-blend-mode: overlay;
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,.9) 30%, rgba(0,0,0,0) 55%);
+              mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,.9) 30%, rgba(0,0,0,0) 55%);
     }
 
-    /* Clouds (restored to “cloudy” look) */
     .cloud{
       position:fixed;
-      width:560px;
-      height:260px;
-      background:rgba(255,255,255,.28);
-      border-radius:220px;
-      pointer-events:none;
-      opacity:.70;
-      box-shadow:
-        95px 55px 0 0 rgba(255,255,255,.22),
-        200px 15px 0 0 rgba(255,255,255,.18),
-        280px 80px 0 0 rgba(255,255,255,.20);
+      width:440px; height:170px;
+      background:rgba(255,255,255,.9);
+      border-radius:999px;
+      box-shadow:0 20px 40px rgba(0,0,0,.1);
+      z-index:-2;
+      opacity:.95;
     }
-    .cloud.c1{top:90px; left:-180px; transform:scale(1.10)}
-    .cloud.c2{top:250px; right:-220px; transform:scale(.98)}
-    .cloud.c3{bottom:150px; left:-240px; transform:scale(1.18); opacity:.55}
-    .cloud.c4{bottom:60px; right:-260px; transform:scale(1.10); opacity:.50}
-
-    .wrap{
-      width:min(1160px, calc(100% - 40px));
-      margin:0 auto;
-      padding:26px 0 42px;
-      position:relative;
-      z-index:2;
+    .cloud::before,
+    .cloud::after{
+      content:"";
+      position:absolute;
+      background:rgba(255,255,255,.92);
+      border-radius:999px;
     }
+    .cloud::before{ width:190px; height:140px; top:-65px; left:65px; }
+    .cloud::after { width:235px; height:160px; top:-75px; right:55px; }
 
-    /* Top bar */
-    .topbar{
+    .c1{top:55px; left:-160px}
+    .c2{top:220px; right:-180px}
+    .c3{bottom:120px; left:10%}
+    .c4{bottom:40px; right:14%; width:520px; opacity:.88}
+
+    .wrap{max-width:1150px; margin:0 auto; padding:22px}
+
+    .top{
       display:flex;
-      align-items:center;
       justify-content:space-between;
-      gap:16px;
-      margin-bottom:18px;
+      align-items:center;
+      gap:14px;
+      margin-bottom:14px;
     }
     .brand{
-      font-weight:900;
-      letter-spacing:.2px;
-      font-size:28px;
-      line-height:1;
-      text-shadow: 0 10px 22px rgba(0,0,0,.10);
-    }
-    .brand .m{color:var(--pink)}
-    .brand .d{color:#7a6cff}
-
-    .topBtns{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      justify-content:center;
-    }
-    .pill{
-      appearance:none;
-      border:1px solid rgba(255,255,255,.55);
-      background:rgba(255,255,255,.35);
-      color:var(--ink);
-      padding:10px 14px;
-      border-radius:999px;
-      font-weight:800;
-      text-decoration:none;
-      box-shadow: 0 10px 22px rgba(0,0,0,.10);
-      backdrop-filter: blur(8px);
-      transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      white-space:nowrap;
-    }
-    .pill:hover{transform: translateY(-1px); box-shadow: 0 14px 28px rgba(0,0,0,.14); background:rgba(255,255,255,.46)}
-    .pill.uk{background:rgba(255,95,178,.25); border-color:rgba(255,95,178,.35)}
-    .pill.us{background:rgba(79,140,255,.22); border-color:rgba(79,140,255,.35)}
-    .pill.soon{opacity:.70; cursor:not-allowed}
-
-    /* Hero */
-    .hero{
-      display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap:18px;
-      align-items:stretch;
-      margin-bottom:18px;
-    }
-    .card{
-      background:var(--card);
-      border:1px solid rgba(255,255,255,.60);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:22px;
-      backdrop-filter: blur(10px);
-    }
-
-    .kicker{
-      font-weight:900;
-      color:#2c2f40;
-      opacity:.92;
-      font-size:18px;
-      margin:0 0 10px;
-    }
-    .title{
-      font-size:64px;
-      font-weight:1000;
-      line-height:1;
-      margin:0 0 12px;
-      letter-spacing:-.8px;
-      background: linear-gradient(90deg, var(--pink), #7a6cff);
+      font-size:34px;
+      font-weight:700;
+      background:linear-gradient(90deg,var(--pink),var(--lav),var(--blue));
       -webkit-background-clip:text;
       background-clip:text;
       color:transparent;
-      text-shadow: 0 14px 28px rgba(0,0,0,.10);
     }
 
-    /* Sparkle forced to stay inline */
-    .bigLine{
-      font-size:22px;
-      font-weight:950;
-      margin:0 0 10px;
-      white-space:normal;
+    .hero{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:18px;
+      margin-bottom:22px;
     }
-    .bigLine .nowrap{
-      white-space:nowrap;
-      display:inline-block;
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:26px;
     }
 
-    .p{
-      margin:0 0 12px;
-      color:var(--muted);
+    h1{
+      margin:6px 0 10px;
+      font-size:72px;
+      line-height:1.02;
+      background:linear-gradient(90deg,var(--pink),var(--lav),var(--blue),var(--mint));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .byline{
       font-size:18px;
-      line-height:1.5;
-      font-weight:650;
+      color:var(--muted);
+      font-weight:700;
+      margin:0 0 10px;
     }
-    .p strong{color:#2c2f40}
 
-    .ctaRow{
-      display:flex;
-      gap:12px;
-      align-items:center;
-      justify-content:center;
-      margin:12px 0 12px;
-      flex-wrap:wrap;
-    }
-    .cta{
-      border:0;
-      padding:12px 18px;
-      border-radius:999px;
-      font-weight:950;
-      font-size:16px;
-      cursor:pointer;
-      text-decoration:none;
-      color:#fff;
-      box-shadow:var(--shadow2);
-      transition:transform .12s ease, box-shadow .12s ease;
+    .hook{
+      margin:10px 0 12px;
+      font-size:25px;
+      font-weight:700;
+      color:#0f172a;
       display:inline-flex;
       align-items:center;
-      justify-content:center;
-      min-width:170px;
+      gap:10px;
     }
-    .cta:hover{transform:translateY(-1px); box-shadow:0 18px 34px rgba(18,25,55,.18)}
-    .cta.uk{background: linear-gradient(90deg, #ff5fb2, #b27bff)}
-    .cta.us{background: linear-gradient(90deg, #4f8cff, #20c6a8)}
-    .cta.soon{opacity:.75; cursor:not-allowed; filter:saturate(.7)}
-
-    .smallNote{
-      margin:0;
-      color:#3a3f58;
-      font-size:16px;
-      font-weight:750;
-      line-height:1.4;
-    }
-    .smallNote a{
-      color:#2c2f40;
-      font-weight:950;
-      text-decoration:none;
-      border-bottom:2px solid rgba(44,47,64,.18);
+    .sparkle{
+      color:var(--gold);
+      text-shadow:0 6px 18px rgba(251,191,36,.25);
     }
 
-    /* Hero right */
-    .joeCard{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:18px;
+    .desc{
+      font-size:20px;
+      margin:0 0 12px;
+      color:#334155;
+      line-height:1.42;
     }
-    .joeFrame{
-      width:100%;
-      max-width:440px;
-      border-radius:22px;
-      background:rgba(255,255,255,.55);
-      border:1px solid rgba(255,255,255,.70);
-      box-shadow:var(--shadow2);
-      padding:18px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-    .joeImg{
-      width:100%;
-      height:auto;
-      display:block;
-      border-radius:16px;
-    }
+    .desc strong{color:#0f172a}
 
-    /* Bundle card */
-    .bundleWrap{
-      margin-top:14px;
-      border-radius:22px;
-      border:1px solid rgba(255,255,255,.70);
-      background:rgba(255,255,255,.42);
-      padding:14px;
-    }
-    .bundleHead{
+    .heroBtns{
       display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
+      gap:14px;
       flex-wrap:wrap;
-      margin-bottom:8px;
+      margin-top:14px;
+      justify-content:center;
     }
-    .bundleTitle{
-      font-weight:1000;
+
+    .btn{
+      padding:14px 22px;
+      border-radius:16px;
+      font-weight:700;
+      text-decoration:none;
+      display:inline-block;
+      color:#fff;
+      transition:transform .08s ease, filter .12s ease;
       font-size:16px;
-      margin:0;
-      color:#2c2f40;
+      min-width:190px;
+      text-align:center;
     }
-    .status{
-      font-size:12px;
-      font-weight:950;
+    .btn:hover{transform:translateY(-1px); filter:brightness(1.02)}
+    .btn:active{transform:translateY(0px); filter:brightness(.98)}
+    .uk{background:linear-gradient(135deg,var(--pink),var(--lav))}
+    .us{background:linear-gradient(135deg,var(--blue),var(--mint))}
+    .dark{background:linear-gradient(135deg,#0f172a,#334155)}
+    .disabled{opacity:.55; filter:saturate(.8); cursor:default; pointer-events:none}
+
+    .subcta{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.35;
+      font-weight:700;
+    }
+    .subcta a{
+      color:#0f172a;
+      text-decoration:none;
+      font-weight:700;
+      border-bottom:2px dotted rgba(15,23,42,.25);
+    }
+    .subcta a:hover{border-bottom-color:rgba(15,23,42,.55)}
+
+    .starter{
+      margin-top:16px;
+      padding:16px 16px 14px;
+      border-radius:16px;
+      background:linear-gradient(135deg, rgba(255,95,162,.12), rgba(167,139,250,.12), rgba(59,130,246,.10));
+      border:1px solid rgba(15,23,42,.06);
+    }
+    .starterTitle{
+      font-size:18px;
+      font-weight:700;
+      color:#0f172a;
+      margin:0 0 6px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .badge{
+      font-size:13px;
+      font-weight:700;
       padding:6px 10px;
       border-radius:999px;
-      border:1px solid rgba(0,0,0,.10);
-      background:rgba(255,255,255,.60);
-      color:#2c2f40;
-      white-space:nowrap;
+      background:#fff;
+      box-shadow:0 10px 20px rgba(0,0,0,.10);
+      color:#0f172a;
+    }
+    .starterText{
+      margin:0;
+      color:#334155;
+      font-size:16px;
+      line-height:1.35;
+      font-weight:500;
     }
 
-    .bundleBody{
+    .bundleRow{
+      margin-top:14px;
       display:grid;
       grid-template-columns: 1fr 1fr;
-      gap:12px;
+      gap:14px;
       align-items:center;
     }
-
-    /* IMPORTANT: no white box behind bundle image */
     .bundleImg{
       width:100%;
+      border-radius:14px;
+      box-shadow:0 14px 28px rgba(0,0,0,.16);
+      background:#fff;
       display:block;
-      background:transparent !important;
-      border-radius:0;
-      box-shadow:none;
     }
-
-    .bundleDesc{
-      margin:0 0 10px;
-      color:#3a3f58;
-      font-weight:750;
-      line-height:1.35;
-      font-size:14px;
-    }
-    .buyCol{
+    .bundleBtns{
       display:flex;
       flex-direction:column;
       gap:10px;
-      align-items:stretch;
-      justify-content:center;
     }
-    .buyBtn{
-      border:0;
-      border-radius:16px;
-      padding:12px 14px;
-      font-weight:1000;
-      cursor:pointer;
-      text-decoration:none;
-      color:#fff;
-      text-align:center;
-      box-shadow: 0 14px 26px rgba(0,0,0,.18);
+    .bundleBtns .btn{
+      min-width:0;
+      width:100%;
     }
-    .buyBtn.uk{background: linear-gradient(90deg, #ff5fb2, #b27bff)}
-    .buyBtn.us{background: linear-gradient(90deg, #4f8cff, #20c6a8)}
-    .buyBtn.bulk{background: rgba(31,42,68,.92)}
     .bundleNote{
-      margin-top:10px;
-      color:#3a3f58;
-      font-weight:800;
+      margin:8px 0 0;
+      color:var(--muted);
       font-size:13px;
-    }
-    .bundleNote a{
-      color:#2c2f40;
-      font-weight:1000;
-      text-decoration:none;
-      border-bottom:2px solid rgba(44,47,64,.18);
+      font-weight:700;
+      line-height:1.35;
     }
 
-    /* Grid */
-    .sectionTitle{
-      font-size:18px;
-      font-weight:950;
-      margin:18px 0 10px;
-      color:#2c2f40;
-      opacity:.92;
-    }
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap:16px;
-      margin-bottom:18px;
-    }
-    .book{
-      position:relative;
-      border-radius:22px;
-      overflow:hidden;
-      background:rgba(255,255,255,.45);
-      border:1px solid rgba(255,255,255,.65);
-      box-shadow:var(--shadow2);
-      padding:12px;
-      transition:transform .14s ease, box-shadow .14s ease;
-    }
-    .book:hover{transform: translateY(-2px) rotate(-.15deg); box-shadow:0 20px 40px rgba(18,25,55,.20)}
-    .cover{
+    .joeImg{
       width:100%;
-      height:auto;
+      border-radius:14px;
+      background:#fff;
       display:block;
-      border-radius:16px;
-      box-shadow: 0 16px 28px rgba(0,0,0,.18);
-      background:transparent;
     }
-    .bookLabel{
-      margin-top:10px;
+
+    .covers{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+    }
+    .cover{
+      position:relative;
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:0 14px 28px rgba(0,0,0,.20);
+      transform:rotate(-2deg);
+      background:#fff;
+    }
+    .cover:nth-child(even){transform:rotate(2deg)}
+    .cover img{width:100%; display:block; transition:transform .18s ease}
+    .cover:hover img{transform:scale(1.03)}
+
+    .overlay{
+      position:absolute;
+      inset:auto 10px 10px 10px;
+      display:flex;
+      gap:10px;
+      opacity:0;
+      transform:translateY(6px);
+      transition:opacity .18s ease, transform .18s ease;
+      pointer-events:none;
+    }
+    .cover:hover .overlay{opacity:1; transform:translateY(0); pointer-events:auto}
+
+    .overlay a{
+      flex:1;
+      text-align:center;
+      padding:10px 10px;
+      border-radius:12px;
+      font-weight:700;
+      text-decoration:none;
+      color:#fff;
+      box-shadow:var(--shadow2);
+      user-select:none;
+      -webkit-tap-highlight-color: transparent;
       font-size:14px;
-      font-weight:950;
-      color:#2c2f40;
+    }
+    .overlay .ukBtn{background:linear-gradient(135deg,var(--pink),var(--lav))}
+    .overlay .usBtn{background:linear-gradient(135deg,var(--blue),var(--mint))}
+
+    .soonTag{
+      position:absolute;
+      top:10px;
+      left:10px;
+      padding:7px 10px;
+      font-size:13px;
+      font-weight:700;
+      border-radius:999px;
+      background:rgba(255,255,255,.92);
+      box-shadow:0 10px 22px rgba(0,0,0,.14);
+      color:#0f172a;
+    }
+
+    .sectionTitle{
+      margin:26px 0 10px;
+      font-size:22px;
+      font-weight:700;
+      color:#0f172a;
+    }
+
+    .quote{
+      margin:28px 0 0;
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:20px;
+    }
+    .starsText{
+      font-size:22px;
+      color:var(--gold);
+      letter-spacing:1px;
+      text-shadow:0 6px 18px rgba(251,191,36,.22);
+    }
+    .quoteText{
+      font-size:17px;
+      margin:10px 0 6px;
+      color:#0f172a;
+      line-height:1.32;
+    }
+    .quoteBy{
+      color:var(--muted);
+      font-size:14px;
+      font-weight:700;
+    }
+
+    .contactBio{
+      margin:10px 0 14px;
+      font-size:15px;
+      color:#334155;
+      line-height:1.38;
+      font-weight:500;
+    }
+
+    .contactBtn{
+      width:100%;
+      padding:14px 18px;
+      border-radius:16px;
+      border:none;
+      background:#fff;
+      box-shadow:var(--shadow);
+      font-weight:700;
+      cursor:pointer;
+      font-size:15px;
+      text-align:left;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:10px;
     }
-    .status.soon{
-      background:rgba(255,255,255,.45);
-      color:#51608a;
-    }
-
-    /* Overlay buttons */
-    .overlay{
-      position:absolute;
-      inset:auto 12px 12px 12px;
-      display:flex;
-      gap:10px;
-      justify-content:center;
-      opacity:0;
-      transform: translateY(6px);
-      transition:opacity .14s ease, transform .14s ease;
-      pointer-events:none;
-    }
-    .book:hover .overlay{opacity:1; transform: translateY(0); pointer-events:auto}
-
-    .miniBtn{
-      appearance:none;
-      border:0;
-      border-radius:16px;
-      padding:10px 12px;
-      font-weight:1000;
-      color:#fff;
-      cursor:pointer;
-      text-decoration:none;
-      min-width:110px;
-      text-align:center;
-      box-shadow: 0 14px 26px rgba(0,0,0,.18);
-      user-select:none;
-    }
-    .miniBtn.uk{background: rgba(255,95,178,.92)}
-    .miniBtn.us{background: rgba(79,140,255,.92)}
-    .miniBtn.soon{opacity:.70; cursor:not-allowed}
-
-    /* Bottom row */
-    .bottom{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:16px;
-      margin-top:14px;
-    }
-    .reviewStars{
-      color:#f4c84a;
-      letter-spacing:2px;
-      font-weight:1000;
-      margin-bottom:10px;
-      font-size:18px;
-      text-shadow: 0 10px 18px rgba(0,0,0,.10);
-    }
-    .quote{
-      margin:0;
-      font-weight:800;
-      color:#2c2f40;
-      font-size:18px;
-      line-height:1.45;
-    }
-    .quote small{
-      display:block;
-      margin-top:10px;
-      color:var(--muted);
-      font-weight:850;
-      font-size:14px;
-    }
-
-    .contactP{
-      margin:0 0 12px;
-      color:#3a3f58;
-      font-size:16px;
-      line-height:1.45;
-      font-weight:750;
-    }
-
-    .copyRow{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
-      padding:12px 14px;
-      border-radius:16px;
-      background:rgba(255,255,255,.55);
-      border:1px solid rgba(0,0,0,.08);
-    }
-    .emailLink{
-      color:#2d74ff;
-      font-weight:1000;
-      text-decoration:none;
-      word-break:break-word;
-    }
-    .copyBtn{
-      margin-left:auto;
-      border:0;
-      background:rgba(255,255,255,.70);
-      border:1px solid rgba(0,0,0,.10);
-      padding:10px 12px;
-      border-radius:999px;
-      font-weight:1000;
-      cursor:pointer;
-      box-shadow: 0 12px 22px rgba(0,0,0,.12);
-    }
-    .copied{
-      font-weight:1000;
-      color:#2a7a4a;
-      display:none;
-    }
+    .contactBtn .label{font-weight:700;color:#0f172a;white-space:nowrap;}
+    .contactBtn .email{font-weight:700;color:var(--blue);overflow:hidden;text-overflow:ellipsis;}
+    .contactBtn .hint{font-size:13px;color:var(--muted);font-weight:700;white-space:nowrap;}
 
     footer{
-      margin-top:18px;
-      text-align:center;
-      color:rgba(44,47,64,.65);
-      font-weight:800;
-      font-size:13px;
+      margin-top:22px;
+      font-size:14px;
+      color:var(--muted);
+      font-weight:700;
     }
 
-    /* Responsive */
-    @media (max-width: 980px){
-      .hero{grid-template-columns:1fr;}
-      .grid{grid-template-columns: repeat(2, 1fr);}
-      .bottom{grid-template-columns:1fr;}
-      .title{font-size:56px}
-      .brand{font-size:26px}
-    }
+    /* MOBILE ONLY FIXES — desktop unchanged */
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .quote{grid-template-columns:1fr}
+      .covers{grid-template-columns:repeat(2,1fr)}
+      h1{font-size:56px}
+      .hook{font-size:21px}
+      .desc{font-size:17px}
+      .byline{font-size:16px}
+      .subcta{font-size:16px}
+      .btn{min-width:0; width:auto}
+      .heroBtns{justify-content:flex-start}
 
-    /* Mobile-only (keeps desktop unchanged) */
-    @media (max-width: 560px){
-      body{overflow-x:hidden}
-      .wrap{width:calc(100% - 22px)}
-      .topbar{flex-direction:column; align-items:flex-start}
-      .topBtns{width:100%; justify-content:center}
-      .pill{flex:1; justify-content:center}
+      html, body{overflow-x:hidden}
 
-      /* Overlay buttons smaller on mobile so they don't cover covers */
-      .overlay{opacity:1; transform:none; pointer-events:auto}
-      .miniBtn{min-width:92px; padding:9px 10px; border-radius:14px; font-size:14px}
+      .bundleRow{grid-template-columns:1fr}
+      .bundleBtns{flex-direction:column}
 
-      /* Prevent contact area from forcing horizontal scroll */
-      .copyBtn{margin-left:0}
-      .copyRow{justify-content:space-between; gap:8px}
+      .overlay{
+        opacity:1;
+        transform:none;
+        pointer-events:auto;
+        position:static;
+        margin:10px 10px 12px;
+        gap:8px;
+      }
+      .overlay a{
+        padding:8px 10px;
+        border-radius:12px;
+        font-size:12px;
+        box-shadow:0 10px 18px rgba(0,0,0,.14);
+      }
+
+      .contactBtn{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:6px;
+        white-space:normal;
+      }
+      .contactBtn .label{white-space:normal}
+      .contactBtn .email{
+        width:100%;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+      }
+      .contactBtn .hint{
+        width:100%;
+        text-align:left;
+        white-space:normal;
+      }
     }
   </style>
 </head>
 
 <body>
+  <div class="dusk"></div>
   <div class="stars"></div>
   <div class="cloud c1"></div>
   <div class="cloud c2"></div>
@@ -541,218 +459,218 @@
   <div class="cloud c4"></div>
 
   <div class="wrap">
-    <div class="topbar">
-      <div class="brand"><span class="m">Markie</span> <span class="d">Diamond</span></div>
-
-      <div class="topBtns">
-        <a class="pill uk" href="https://www.amazon.co.uk/dp/106827400X" target="_blank" rel="noopener">Amazon UK</a>
-        <span class="pill us soon" aria-disabled="true" title="US links coming soon">Amazon US (soon)</span>
-      </div>
+    <div class="top">
+      <div class="brand">Markie Diamond</div>
+      <div></div>
     </div>
 
     <div class="hero">
       <div class="card">
-        <p class="kicker">By Markie Diamond — creating gentle, rhyming animal adventures for little dreamers.</p>
+        <h1>Dreamy Joe</h1>
+        <div class="byline">By Markie Diamond — creating gentle, rhyming animal adventures for little dreamers.</div>
 
-        <h1 class="title">Dreamy Joe</h1>
-
-        <p class="bigLine">
+        <div class="hook">
           Bedtime stories children ask for again and again — and parents love reading too
-          <span class="nowrap">✨</span>
-        </p>
-
-        <p class="p">
-          When Joe goes to sleep, his imagination takes over. Each night, he dreams he becomes a different animal —
-          discovering feelings, friendships, and gentle life lessons along the way.
-        </p>
-
-        <p class="p">
-          <strong>Warm, rhythmic stories written in gentle rhyme</strong> — perfect for reading aloud.
-        </p>
-
-        <div class="ctaRow">
-          <a class="cta uk" href="https://www.amazon.co.uk/dp/106827400X" target="_blank" rel="noopener">Shop on Amazon UK</a>
-          <span class="cta us soon" aria-disabled="true" title="US links coming soon">Amazon US (soon)</span>
+          <span class="sparkle">✨</span>
         </div>
 
-        <div class="bundleWrap">
-          <div class="bundleHead">
-            <p class="bundleTitle">Dreamy Joe – Starter Set (Books 1–4)</p>
-            <span class="status">In stock</span>
+        <div class="desc">
+          When Joe goes to sleep, his imagination takes over.
+          Each night, he dreams he becomes a different animal — discovering feelings, friendships,
+          and gentle life lessons along the way.
+        </div>
+
+        <div class="desc">
+          <strong>Warm, rhythmic stories written in gentle rhyme</strong> — perfect for reading aloud.
+        </div>
+
+        <div class="heroBtns">
+          <a class="btn uk" id="heroUk" href="#" target="_blank" rel="noopener">Shop on Amazon UK</a>
+          <a class="btn us disabled" id="heroUs" href="#" aria-disabled="true">Amazon US (soon)</a>
+        </div>
+
+        <div class="starter">
+          <div class="starterTitle">
+            Dreamy Joe – Starter Set (Books 1–4)
+            <span class="badge">In stock</span>
           </div>
 
-          <div class="bundleBody">
-            <img class="bundleImg" src="Bundle-1-4.png" alt="Dreamy Joe – Starter Set (Books 1–4)">
+          <p class="starterText">
+            Four gentle, rhyming bedtime stories in one beautiful bundle — perfect as a gift set or bedtime pack for ages 3–6.
+          </p>
 
-            <div class="buyCol">
-              <p class="bundleDesc">
-                Four gentle, rhyming bedtime stories in one beautiful bundle — perfect as a gift set or bedtime pack for ages 3–6.
-              </p>
+          <div class="bundleRow">
+            <img class="bundleImg" src="Bundle-1-4.png" alt="Dreamy Joe Starter Set (Books 1–4) bundle">
 
-              <a class="buyBtn uk" href="https://buy.stripe.com/28E7sEdNJbz0a1EdV58so00" target="_blank" rel="noopener">Buy Starter Set (UK)</a>
-              <a class="buyBtn us" href="https://buy.stripe.com/9B6dR2bFBauW8XA5oz8so01" target="_blank" rel="noopener">Buy Starter Set (US)</a>
+            <div class="bundleBtns">
+              <a class="btn uk" href="https://buy.stripe.com/28E7sEdNJbz0a1EdV58so00" target="_blank" rel="noopener">
+                Buy Starter Set (UK)
+              </a>
+              <a class="btn us" href="https://buy.stripe.com/9B6dR2bFBauW8XA5oz8so01" target="_blank" rel="noopener">
+                Buy Starter Set (US)
+              </a>
+              <a class="btn dark" href="#contact" id="bulkScroll">Bulk / Schools / Special requests</a>
 
-              <a class="buyBtn bulk" href="#contact" id="bulkScroll">Bulk / Schools</a>
+              <div class="bundleNote">
+                UK orders ship within the UK. US orders ship to the United States. For large school/nursery orders, contact us for a custom quote.
+              </div>
             </div>
           </div>
-
-          <div class="bundleNote">
-            Bulk or school orders? <a href="#contact" id="bulkScroll2">Email Markie</a>.
-          </div>
         </div>
 
-        <p class="smallNote" style="margin-top:14px;">
+        <div class="subcta">
           Buying for a school, nursery, or as a gift set?
-          <a href="#contact" id="contactScroll">Get in touch</a> for bulk orders and collaboration ideas (including animal suggestions for future stories).
-        </p>
+          <a href="#contact" id="getInTouch">Get in touch</a> for bulk orders, collaboration ideas, and special requests (including animal suggestions for future stories).
+        </div>
       </div>
 
-      <div class="card joeCard">
-        <div class="joeFrame">
-          <img class="joeImg" src="assets-joe.png" alt="Dreamy Joe character illustration">
-        </div>
+      <div class="card">
+        <img class="joeImg" src="assets-joe.png" alt="Dreamy Joe character">
       </div>
     </div>
 
     <div class="sectionTitle">Available now (Books 1–4)</div>
-    <div class="grid">
-      <div class="book">
-        <img class="cover" src="assets-covers-1.png" alt="Dreamy Joe & Anxious Ant cover">
+
+    <div class="covers">
+      <div class="cover" data-book="1">
+        <img src="assets-covers-1.png" alt="Dreamy Joe & Anxious Ant">
         <div class="overlay">
-          <a class="miniBtn uk" href="https://www.amazon.co.uk/dp/106827400X" target="_blank" rel="noopener">Amazon UK</a>
-          <span class="miniBtn us soon" aria-disabled="true">US (soon)</span>
+          <a class="ukBtn" data-link="uk" href="https://www.amazon.co.uk/dp/106827400X" target="_blank" rel="noopener">Amazon UK</a>
+          <a class="usBtn disabled" data-link="us" href="#" aria-disabled="true">Amazon US (soon)</a>
         </div>
-        <div class="bookLabel"><span>Anxious Ant</span><span class="status">Live</span></div>
       </div>
 
-      <div class="book">
-        <img class="cover" src="assets-covers-2.png" alt="Dreamy Joe & Cheery Croc cover">
+      <div class="cover" data-book="2">
+        <img src="assets-covers-2.png" alt="Dreamy Joe & Cheery Croc">
         <div class="overlay">
-          <a class="miniBtn uk" href="https://www.amazon.co.uk/dp/1068274018" target="_blank" rel="noopener">Amazon UK</a>
-          <span class="miniBtn us soon" aria-disabled="true">US (soon)</span>
+          <a class="ukBtn" data-link="uk" href="https://www.amazon.co.uk/dp/1068274018" target="_blank" rel="noopener">Amazon UK</a>
+          <a class="usBtn disabled" data-link="us" href="#" aria-disabled="true">Amazon US (soon)</a>
         </div>
-        <div class="bookLabel"><span>Cheery Croc</span><span class="status">Live</span></div>
       </div>
 
-      <div class="book">
-        <img class="cover" src="assets-covers-3.png" alt="Dreamy Joe & Daring Dolphin cover">
+      <div class="cover" data-book="3">
+        <img src="assets-covers-3.png" alt="Dreamy Joe & Easy Elephant">
         <div class="overlay">
-          <span class="miniBtn uk soon" aria-disabled="true">UK (soon)</span>
-          <span class="miniBtn us soon" aria-disabled="true">US (soon)</span>
+          <a class="ukBtn" data-link="uk" href="https://www.amazon.co.uk/dp/1068274034" target="_blank" rel="noopener">Amazon UK</a>
+          <a class="usBtn disabled" data-link="us" href="#" aria-disabled="true">Amazon US (soon)</a>
         </div>
-        <div class="bookLabel"><span>Daring Dolphin</span><span class="status soon">Updating</span></div>
       </div>
 
-      <div class="book">
-        <img class="cover" src="assets-covers-4.png" alt="Dreamy Joe & Easy Elephant cover">
+      <div class="cover" data-book="4">
+        <img src="assets-covers-4.png" alt="Dreamy Joe & Daring Dolphin">
         <div class="overlay">
-          <a class="miniBtn uk" href="https://www.amazon.co.uk/dp/1068274034" target="_blank" rel="noopener">Amazon UK</a>
-          <span class="miniBtn us soon" aria-disabled="true">US (soon)</span>
+          <a class="ukBtn disabled" data-link="uk" href="#" aria-disabled="true">Amazon UK (soon)</a>
+          <a class="usBtn disabled" data-link="us" href="#" aria-disabled="true">Amazon US (soon)</a>
         </div>
-        <div class="bookLabel"><span>Easy Elephant</span><span class="status">Live</span></div>
       </div>
     </div>
 
     <div class="sectionTitle">Coming soon (Books 5–8)</div>
-    <div class="grid">
-      <div class="book">
-        <img class="cover" src="assets-covers-6.png" alt="Dreamy Joe & Graceful Gorilla cover">
+
+    <div class="covers">
+      <div class="cover" data-book="5">
+        <div class="soonTag">Coming soon</div>
+        <img src="assets-covers-5.png" alt="Dreamy Joe & Graceful Gorilla">
         <div class="overlay">
-          <span class="miniBtn uk soon" aria-disabled="true">UK (soon)</span>
-          <span class="miniBtn us soon" aria-disabled="true">US (soon)</span>
+          <a class="ukBtn disabled" href="#" aria-disabled="true">Amazon UK (soon)</a>
+          <a class="usBtn disabled" href="#" aria-disabled="true">Amazon US (soon)</a>
         </div>
-        <div class="bookLabel"><span>Graceful Gorilla</span><span class="status soon">Coming soon</span></div>
       </div>
 
-      <div class="book">
-        <img class="cover" src="assets-covers-5.png" alt="Dreamy Joe & Grumpy Giraffe cover">
+      <div class="cover" data-book="6">
+        <div class="soonTag">Coming soon</div>
+        <img src="assets-covers-6.png" alt="Dreamy Joe & Grumpy Giraffe">
         <div class="overlay">
-          <span class="miniBtn uk soon" aria-disabled="true">UK (soon)</span>
-          <span class="miniBtn us soon" aria-disabled="true">US (soon)</span>
+          <a class="ukBtn disabled" href="#" aria-disabled="true">Amazon UK (soon)</a>
+          <a class="usBtn disabled" href="#" aria-disabled="true">Amazon US (soon)</a>
         </div>
-        <div class="bookLabel"><span>Grumpy Giraffe</span><span class="status soon">Coming soon</span></div>
       </div>
 
-      <div class="book">
-        <img class="cover" src="assets-covers-7.png" alt="Dreamy Joe & Patient Penguin cover">
+      <div class="cover" data-book="7">
+        <div class="soonTag">Coming soon</div>
+        <img src="assets-covers-7.png" alt="Dreamy Joe & Patient Penguin">
         <div class="overlay">
-          <span class="miniBtn uk soon" aria-disabled="true">UK (soon)</span>
-          <span class="miniBtn us soon" aria-disabled="true">US (soon)</span>
+          <a class="ukBtn disabled" href="#" aria-disabled="true">Amazon UK (soon)</a>
+          <a class="usBtn disabled" href="#" aria-disabled="true">Amazon US (soon)</a>
         </div>
-        <div class="bookLabel"><span>Patient Penguin</span><span class="status soon">Coming soon</span></div>
       </div>
 
-      <div class="book">
-        <img class="cover" src="assets-covers-8.png" alt="Dreamy Joe & Tolerant Tiger cover">
+      <div class="cover" data-book="8">
+        <div class="soonTag">Coming soon</div>
+        <img src="assets-covers-8.png" alt="Dreamy Joe & Tolerant Tiger">
         <div class="overlay">
-          <span class="miniBtn uk soon" aria-disabled="true">UK (soon)</span>
-          <span class="miniBtn us soon" aria-disabled="true">US (soon)</span>
+          <a class="ukBtn disabled" href="#" aria-disabled="true">Amazon UK (soon)</a>
+          <a class="usBtn disabled" href="#" aria-disabled="true">Amazon US (soon)</a>
         </div>
-        <div class="bookLabel"><span>Tolerant Tiger</span><span class="status soon">Coming soon</span></div>
       </div>
     </div>
 
-    <div class="bottom">
+    <div class="quote">
       <div class="card">
-        <div class="reviewStars">★★★★★</div>
-        <p class="quote">
-          “Our kids ask for <em>Dreamy Joe</em> every single night. They love every animal, talk about the stories the next day, and can’t wait to see which one Joe becomes next.”
-          <small>— Parent review</small>
-        </p>
+        <div class="starsText">★★★★★</div>
+        <div class="quoteText">
+          “Our kids ask for <em>Dreamy Joe</em> every single night. They love every animal, talk about the stories
+          the next day, and can’t wait to see which one Joe becomes next.”
+        </div>
+        <div class="quoteBy">— Parent review</div>
       </div>
 
       <div class="card" id="contact">
-        <h2 style="margin:0 0 10px; font-size:18px; font-weight:1000;">Contact</h2>
-        <p class="contactP">
-          Markie Diamond writes gentle, rhyming picture books designed for calm, cosy reading.
-          The Dreamy Joe series follows Joe’s nightly animal dreams — each one bringing a small lesson and a smile.
-        </p>
-
-        <div class="copyRow">
-          <strong>Email Markie</strong>
-          <span>—</span>
-          <a class="emailLink" href="mailto:markie@markiediamond.com">markie@markiediamond.com</a>
-          <button class="copyBtn" id="copyBtn" type="button">Click to copy</button>
-          <span class="copied" id="copied">Copied</span>
+        <strong>Contact</strong>
+        <div class="contactBio">
+          Markie Diamond writes gentle, rhyming picture books designed for calm, cosy reading. The Dreamy Joe series follows Joe’s nightly animal dreams — each one bringing a small lesson and a smile.
         </div>
+
+        <button class="contactBtn" id="emailBtn" type="button">
+          <span style="display:flex; flex-direction:column; gap:2px; min-width:0; width:100%;">
+            <span class="label">Email Markie</span>
+            <span class="email">markie@markiediamond.com</span>
+          </span>
+          <span class="hint" id="emailHint">Click to copy</span>
+        </button>
       </div>
     </div>
 
-    <footer>© 2026 Markie Diamond Books</footer>
+    <footer>
+      © <span id="y"></span> Markie Diamond Books
+    </footer>
   </div>
 
   <script>
+    // Stop placeholder links (#) from jumping to top
+    document.addEventListener("click", (e) => {
+      const a = e.target.closest("a");
+      if (!a) return;
+      const href = a.getAttribute("href");
+      if (href === "#") e.preventDefault();
+    });
+
+    // Hero buttons: UK live, US coming soon for now
+    const AMAZON_UK_HOME = "https://www.amazon.co.uk/s?i=stripbooks&rh=p_27%3AMarkie+Diamond";
+    document.getElementById("heroUk").href = AMAZON_UK_HOME;
+
+    document.getElementById("y").textContent = new Date().getFullYear();
+
     function smoothToContact(e){
-      if(e) e.preventDefault();
-      const el = document.getElementById("contact");
-      if(!el) return;
-      el.scrollIntoView({behavior:"smooth", block:"start"});
+      e.preventDefault();
+      document.getElementById("contact").scrollIntoView({ behavior: "smooth", block: "start" });
     }
-    document.getElementById("contactScroll")?.addEventListener("click", smoothToContact);
-    document.getElementById("bulkScroll")?.addEventListener("click", smoothToContact);
-    document.getElementById("bulkScroll2")?.addEventListener("click", smoothToContact);
+    document.getElementById("getInTouch").addEventListener("click", smoothToContact);
+    document.getElementById("bulkScroll").addEventListener("click", smoothToContact);
 
-    const copyBtn = document.getElementById("copyBtn");
-    const copied = document.getElementById("copied");
-    const email = "markie@markiediamond.com";
-
-    copyBtn?.addEventListener("click", async () => {
+    const emailBtn = document.getElementById("emailBtn");
+    const emailHint = document.getElementById("emailHint");
+    emailBtn.addEventListener("click", async () => {
       try{
-        await navigator.clipboard.writeText(email);
-      }catch{
-        const t = document.createElement("textarea");
-        t.value = email;
-        document.body.appendChild(t);
-        t.select();
-        document.execCommand("copy");
-        document.body.removeChild(t);
+        await navigator.clipboard.writeText("markie@markiediamond.com");
+        const old = emailHint.textContent;
+        emailHint.textContent = "Copied!";
+        setTimeout(() => emailHint.textContent = old, 1400);
+      }catch(e){
+        const old = emailHint.textContent;
+        emailHint.textContent = "Copy failed";
+        setTimeout(() => emailHint.textContent = old, 1400);
       }
-      copied.style.display = "inline";
-      copyBtn.textContent = "Copied";
-      setTimeout(() => {
-        copied.style.display = "none";
-        copyBtn.textContent = "Click to copy";
-      }, 1600);
     });
   </script>
 </body>
