@@ -180,6 +180,7 @@
     .btn:active{transform:translateY(0px); filter:brightness(.98)}
     .uk{background:linear-gradient(135deg,var(--pink),var(--lav))}
     .us{background:linear-gradient(135deg,var(--blue),var(--mint))}
+    .dark{background:linear-gradient(135deg,#0f172a,#334155)}
     .disabled{opacity:.55; filter:saturate(.8); cursor:default; pointer-events:none}
 
     .subcta{
@@ -229,6 +230,37 @@
       font-size:16px;
       line-height:1.35;
       font-weight:500;
+    }
+
+    .bundleRow{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:center;
+    }
+    .bundleImg{
+      width:100%;
+      border-radius:14px;
+      box-shadow:0 14px 28px rgba(0,0,0,.16);
+      background:#fff;
+      display:block;
+    }
+    .bundleBtns{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .bundleBtns .btn{
+      min-width:0;
+      width:100%;
+    }
+    .bundleNote{
+      margin:8px 0 0;
+      color:var(--muted);
+      font-size:13px;
+      font-weight:700;
+      line-height:1.35;
     }
 
     .joeImg{
@@ -378,6 +410,9 @@
 
       html, body{overflow-x:hidden}
 
+      .bundleRow{grid-template-columns:1fr}
+      .bundleBtns{flex-direction:column}
+
       .overlay{
         opacity:1;
         transform:none;
@@ -456,12 +491,31 @@
 
         <div class="starter">
           <div class="starterTitle">
-            Starter Set (Books 1–4)
+            Dreamy Joe – Starter Set (Books 1–4)
             <span class="badge">In stock</span>
           </div>
+
           <p class="starterText">
-            Perfect as a gift set or bedtime bundle. Order direct from Markie for bulk requests, school/nursery orders, or special bundles.
+            Four gentle, rhyming bedtime stories in one beautiful bundle — perfect as a gift set or bedtime pack for ages 3–6.
           </p>
+
+          <div class="bundleRow">
+            <img class="bundleImg" src="Bundle-1-4.png" alt="Dreamy Joe Starter Set (Books 1–4) bundle">
+
+            <div class="bundleBtns">
+              <a class="btn uk" href="https://buy.stripe.com/28E7sEdNJbz0a1EdV58so00" target="_blank" rel="noopener">
+                Buy Starter Set (UK)
+              </a>
+              <a class="btn us" href="https://buy.stripe.com/9B6dR2bFBauW8XA5oz8so01" target="_blank" rel="noopener">
+                Buy Starter Set (US)
+              </a>
+              <a class="btn dark" href="#contact" id="bulkScroll">Bulk / Schools / Special requests</a>
+
+              <div class="bundleNote">
+                UK orders ship within the UK. US orders ship to the United States. For large school/nursery orders, contact us for a custom quote.
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="subcta">
@@ -597,10 +651,12 @@
 
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    document.getElementById("getInTouch").addEventListener("click", (e) => {
+    function smoothToContact(e){
       e.preventDefault();
       document.getElementById("contact").scrollIntoView({ behavior: "smooth", block: "start" });
-    });
+    }
+    document.getElementById("getInTouch").addEventListener("click", smoothToContact);
+    document.getElementById("bulkScroll").addEventListener("click", smoothToContact);
 
     const emailBtn = document.getElementById("emailBtn");
     const emailHint = document.getElementById("emailHint");
