@@ -180,6 +180,7 @@
     .btn:active{transform:translateY(0px); filter:brightness(.98)}
     .uk{background:linear-gradient(135deg,var(--pink),var(--lav))}
     .us{background:linear-gradient(135deg,var(--blue),var(--mint))}
+    .disabled{opacity:.55; filter:saturate(.8); cursor:default; pointer-events:none}
 
     .subcta{
       margin-top:14px;
@@ -195,6 +196,40 @@
       border-bottom:2px dotted rgba(15,23,42,.25);
     }
     .subcta a:hover{border-bottom-color:rgba(15,23,42,.55)}
+
+    .starter{
+      margin-top:16px;
+      padding:16px 16px 14px;
+      border-radius:16px;
+      background:linear-gradient(135deg, rgba(255,95,162,.12), rgba(167,139,250,.12), rgba(59,130,246,.10));
+      border:1px solid rgba(15,23,42,.06);
+    }
+    .starterTitle{
+      font-size:18px;
+      font-weight:700;
+      color:#0f172a;
+      margin:0 0 6px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .badge{
+      font-size:13px;
+      font-weight:700;
+      padding:6px 10px;
+      border-radius:999px;
+      background:#fff;
+      box-shadow:0 10px 20px rgba(0,0,0,.10);
+      color:#0f172a;
+    }
+    .starterText{
+      margin:0;
+      color:#334155;
+      font-size:16px;
+      line-height:1.35;
+      font-weight:500;
+    }
 
     .joeImg{
       width:100%;
@@ -248,6 +283,26 @@
     }
     .overlay .ukBtn{background:linear-gradient(135deg,var(--pink),var(--lav))}
     .overlay .usBtn{background:linear-gradient(135deg,var(--blue),var(--mint))}
+
+    .soonTag{
+      position:absolute;
+      top:10px;
+      left:10px;
+      padding:7px 10px;
+      font-size:13px;
+      font-weight:700;
+      border-radius:999px;
+      background:rgba(255,255,255,.92);
+      box-shadow:0 10px 22px rgba(0,0,0,.14);
+      color:#0f172a;
+    }
+
+    .sectionTitle{
+      margin:26px 0 10px;
+      font-size:22px;
+      font-weight:700;
+      color:#0f172a;
+    }
 
     .quote{
       margin:28px 0 0;
@@ -321,10 +376,8 @@
       .btn{min-width:0; width:auto}
       .heroBtns{justify-content:flex-start}
 
-      /* Make sure nothing forces horizontal scroll */
       html, body{overflow-x:hidden}
 
-      /* Cover buttons: smaller and below cover on mobile */
       .overlay{
         opacity:1;
         transform:none;
@@ -340,7 +393,6 @@
         box-shadow:0 10px 18px rgba(0,0,0,.14);
       }
 
-      /* Contact: stack label + email so it never widens the page */
       .contactBtn{
         flex-direction:column;
         align-items:flex-start;
@@ -399,7 +451,17 @@
 
         <div class="heroBtns">
           <a class="btn uk" id="heroUk" href="#" target="_blank" rel="noopener">Shop on Amazon UK</a>
-          <a class="btn us" id="heroUs" href="#" target="_blank" rel="noopener">Shop on Amazon US</a>
+          <a class="btn us disabled" id="heroUs" href="#" aria-disabled="true">Amazon US (soon)</a>
+        </div>
+
+        <div class="starter">
+          <div class="starterTitle">
+            Starter Set (Books 1–4)
+            <span class="badge">In stock</span>
+          </div>
+          <p class="starterText">
+            Perfect as a gift set or bedtime bundle. Order direct from Markie for bulk requests, school/nursery orders, or special bundles.
+          </p>
         </div>
 
         <div class="subcta">
@@ -413,68 +475,78 @@
       </div>
     </div>
 
+    <div class="sectionTitle">Available now (Books 1–4)</div>
+
     <div class="covers">
       <div class="cover" data-book="1">
-        <img src="assets-covers-1.png" alt="Dreamy Joe book 1">
+        <img src="assets-covers-1.png" alt="Dreamy Joe & Anxious Ant">
         <div class="overlay">
-          <a class="ukBtn" data-link="uk" href="#" target="_blank" rel="noopener">Amazon UK</a>
-          <a class="usBtn" data-link="us" href="#" target="_blank" rel="noopener">Amazon US</a>
+          <a class="ukBtn" data-link="uk" href="https://www.amazon.co.uk/dp/106827400X" target="_blank" rel="noopener">Amazon UK</a>
+          <a class="usBtn disabled" data-link="us" href="#" aria-disabled="true">Amazon US (soon)</a>
         </div>
       </div>
 
       <div class="cover" data-book="2">
-        <img src="assets-covers-2.png" alt="Dreamy Joe book 2">
+        <img src="assets-covers-2.png" alt="Dreamy Joe & Cheery Croc">
         <div class="overlay">
-          <a class="ukBtn" data-link="uk" href="#" target="_blank" rel="noopener">Amazon UK</a>
-          <a class="usBtn" data-link="us" href="#" target="_blank" rel="noopener">Amazon US</a>
+          <a class="ukBtn" data-link="uk" href="https://www.amazon.co.uk/dp/1068274018" target="_blank" rel="noopener">Amazon UK</a>
+          <a class="usBtn disabled" data-link="us" href="#" aria-disabled="true">Amazon US (soon)</a>
         </div>
       </div>
 
       <div class="cover" data-book="3">
-        <img src="assets-covers-3.png" alt="Dreamy Joe book 3">
+        <img src="assets-covers-3.png" alt="Dreamy Joe & Easy Elephant">
         <div class="overlay">
-          <a class="ukBtn" data-link="uk" href="#" target="_blank" rel="noopener">Amazon UK</a>
-          <a class="usBtn" data-link="us" href="#" target="_blank" rel="noopener">Amazon US</a>
+          <a class="ukBtn" data-link="uk" href="https://www.amazon.co.uk/dp/1068274034" target="_blank" rel="noopener">Amazon UK</a>
+          <a class="usBtn disabled" data-link="us" href="#" aria-disabled="true">Amazon US (soon)</a>
         </div>
       </div>
 
       <div class="cover" data-book="4">
-        <img src="assets-covers-4.png" alt="Dreamy Joe book 4">
+        <img src="assets-covers-4.png" alt="Dreamy Joe & Daring Dolphin">
         <div class="overlay">
-          <a class="ukBtn" data-link="uk" href="#" target="_blank" rel="noopener">Amazon UK</a>
-          <a class="usBtn" data-link="us" href="#" target="_blank" rel="noopener">Amazon US</a>
+          <a class="ukBtn disabled" data-link="uk" href="#" aria-disabled="true">Amazon UK (soon)</a>
+          <a class="usBtn disabled" data-link="us" href="#" aria-disabled="true">Amazon US (soon)</a>
         </div>
       </div>
+    </div>
 
+    <div class="sectionTitle">Coming soon (Books 5–8)</div>
+
+    <div class="covers">
       <div class="cover" data-book="5">
-        <img src="assets-covers-5.png" alt="Dreamy Joe book 5">
+        <div class="soonTag">Coming soon</div>
+        <img src="assets-covers-5.png" alt="Dreamy Joe & Graceful Gorilla">
         <div class="overlay">
-          <a class="ukBtn" data-link="uk" href="#" target="_blank" rel="noopener">Amazon UK</a>
-          <a class="usBtn" data-link="us" href="#" target="_blank" rel="noopener">Amazon US</a>
+          <a class="ukBtn disabled" href="#" aria-disabled="true">Amazon UK (soon)</a>
+          <a class="usBtn disabled" href="#" aria-disabled="true">Amazon US (soon)</a>
         </div>
       </div>
 
       <div class="cover" data-book="6">
-        <img src="assets-covers-6.png" alt="Dreamy Joe book 6">
+        <div class="soonTag">Coming soon</div>
+        <img src="assets-covers-6.png" alt="Dreamy Joe & Grumpy Giraffe">
         <div class="overlay">
-          <a class="ukBtn" data-link="uk" href="#" target="_blank" rel="noopener">Amazon UK</a>
-          <a class="usBtn" data-link="us" href="#" target="_blank" rel="noopener">Amazon US</a>
+          <a class="ukBtn disabled" href="#" aria-disabled="true">Amazon UK (soon)</a>
+          <a class="usBtn disabled" href="#" aria-disabled="true">Amazon US (soon)</a>
         </div>
       </div>
 
       <div class="cover" data-book="7">
-        <img src="assets-covers-7.png" alt="Dreamy Joe book 7">
+        <div class="soonTag">Coming soon</div>
+        <img src="assets-covers-7.png" alt="Dreamy Joe & Patient Penguin">
         <div class="overlay">
-          <a class="ukBtn" data-link="uk" href="#" target="_blank" rel="noopener">Amazon UK</a>
-          <a class="usBtn" data-link="us" href="#" target="_blank" rel="noopener">Amazon US</a>
+          <a class="ukBtn disabled" href="#" aria-disabled="true">Amazon UK (soon)</a>
+          <a class="usBtn disabled" href="#" aria-disabled="true">Amazon US (soon)</a>
         </div>
       </div>
 
       <div class="cover" data-book="8">
-        <img src="assets-covers-8.png" alt="Dreamy Joe book 8">
+        <div class="soonTag">Coming soon</div>
+        <img src="assets-covers-8.png" alt="Dreamy Joe & Tolerant Tiger">
         <div class="overlay">
-          <a class="ukBtn" data-link="uk" href="#" target="_blank" rel="noopener">Amazon UK</a>
-          <a class="usBtn" data-link="us" href="#" target="_blank" rel="noopener">Amazon US</a>
+          <a class="ukBtn disabled" href="#" aria-disabled="true">Amazon UK (soon)</a>
+          <a class="usBtn disabled" href="#" aria-disabled="true">Amazon US (soon)</a>
         </div>
       </div>
     </div>
@@ -511,7 +583,7 @@
   </div>
 
   <script>
-    // Stop placeholder links (#) from jumping to top (mobile + desktop)
+    // Stop placeholder links (#) from jumping to top
     document.addEventListener("click", (e) => {
       const a = e.target.closest("a");
       if (!a) return;
@@ -519,22 +591,9 @@
       if (href === "#") e.preventDefault();
     });
 
-    const AMAZON_UK_HOME = "#";
-    const AMAZON_US_HOME = "#";
-
-    const BOOK_LINKS = {
-      1: { uk: "#", us: "#" },
-      2: { uk: "#", us: "#" },
-      3: { uk: "#", us: "#" },
-      4: { uk: "#", us: "#" },
-      5: { uk: "#", us: "#" },
-      6: { uk: "#", us: "#" },
-      7: { uk: "#", us: "#" },
-      8: { uk: "#", us: "#" }
-    };
-
+    // Hero buttons: UK live, US coming soon for now
+    const AMAZON_UK_HOME = "https://www.amazon.co.uk/s?i=stripbooks&rh=p_27%3AMarkie+Diamond";
     document.getElementById("heroUk").href = AMAZON_UK_HOME;
-    document.getElementById("heroUs").href = AMAZON_US_HOME;
 
     document.getElementById("y").textContent = new Date().getFullYear();
 
@@ -556,17 +615,6 @@
         emailHint.textContent = "Copy failed";
         setTimeout(() => emailHint.textContent = old, 1400);
       }
-    });
-
-    document.querySelectorAll(".cover").forEach(cover => {
-      const n = cover.getAttribute("data-book");
-      const links = BOOK_LINKS[n];
-      if (!links) return;
-
-      const uk = cover.querySelector('a[data-link="uk"]');
-      const us = cover.querySelector('a[data-link="us"]');
-      if (uk) uk.href = links.uk || "#";
-      if (us) us.href = links.us || "#";
     });
   </script>
 </body>
