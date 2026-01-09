@@ -243,7 +243,7 @@
       width:100%;
       border-radius:14px;
       box-shadow:0 14px 28px rgba(0,0,0,.16);
-      background:#fff;
+      background:transparent; /* important: don't force white */
       display:block;
     }
     .bundleBtns{
@@ -255,19 +255,37 @@
       min-width:0;
       width:100%;
     }
-    .bundleNote{
-      margin:8px 0 0;
-      color:var(--muted);
-      font-size:13px;
-      font-weight:700;
-      line-height:1.35;
-    }
 
+    .joeCard{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+    }
     .joeImg{
       width:100%;
+      max-width:520px;
       border-radius:14px;
       background:#fff;
       display:block;
+      margin:0 auto;
+    }
+    .joeBulk{
+      width:100%;
+      max-width:520px;
+    }
+    .joeBulk .btn{
+      width:100%;
+      min-width:0;
+    }
+    .joeBulkNote{
+      margin:8px 0 0;
+      color:var(--muted);
+      font-size:14px;
+      font-weight:700;
+      line-height:1.35;
+      text-align:center;
     }
 
     .covers{
@@ -446,6 +464,10 @@
         text-align:left;
         white-space:normal;
       }
+
+      .joeBulkNote{
+        text-align:left;
+      }
     }
   </style>
 </head>
@@ -509,23 +531,25 @@
               <a class="btn us" href="https://buy.stripe.com/9B6dR2bFBauW8XA5oz8so01" target="_blank" rel="noopener">
                 Buy Starter Set (US)
               </a>
-              <a class="btn dark" href="#contact" id="bulkScroll">Bulk / Schools / Special requests</a>
-
-              <div class="bundleNote">
-                UK orders ship within the UK. US orders ship to the United States. For large school/nursery orders, contact us for a custom quote.
-              </div>
             </div>
           </div>
         </div>
 
         <div class="subcta">
           Buying for a school, nursery, or as a gift set?
-          <a href="#contact" id="getInTouch">Get in touch</a> for bulk orders, collaboration ideas, and special requests (including animal suggestions for future stories).
+          <a href="#contact" id="getInTouch">Get in touch</a> for bulk orders, collaboration ideas, and animal suggestions for future stories.
         </div>
       </div>
 
-      <div class="card">
+      <div class="card joeCard">
         <img class="joeImg" src="assets-joe.png" alt="Dreamy Joe character">
+
+        <div class="joeBulk">
+          <a class="btn dark" href="#contact" id="bulkScroll">Bulk / Schools</a>
+          <div class="joeBulkNote">
+            For school/nursery packs, bulk orders, collaborations, or story ideas — send a quick note and we’ll reply.
+          </div>
+        </div>
       </div>
     </div>
 
