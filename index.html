@@ -241,18 +241,24 @@
       width:100%;
     }
 
-    /* NEW: keep Joe vertically centred and add bulk contact block under Joe */
     .joeCard{
       display:flex;
       flex-direction:column;
       justify-content:center;
+      align-items:center;
       gap:14px;
+      padding-top:18px;
+      padding-bottom:18px;
     }
     .joeImg{
       width:100%;
+      max-width:360px;
+      max-height:430px;
+      object-fit:contain;
       border-radius:14px;
       background:#fff;
       display:block;
+      margin:0 auto;
     }
     .joeBulk{
       margin-top:2px;
@@ -261,6 +267,7 @@
       background:linear-gradient(135deg, rgba(15,23,42,.06), rgba(15,23,42,.02));
       border:1px solid rgba(15,23,42,.06);
       text-align:center;
+      width:100%;
     }
     .joeBulkNote{
       margin:0;
@@ -274,6 +281,41 @@
       min-width:0;
       width:100%;
       max-width:320px;
+    }
+
+    .bundleSection{
+      margin-top:22px;
+    }
+
+    .bundleGrid3{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .bundleCard{
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:20px;
+    }
+
+    .bundleCard .starterTitle{
+      margin-bottom:8px;
+    }
+
+    .bundleCard .starterText{
+      margin-bottom:12px;
+    }
+
+    .bundleCard .bundleRow{
+      grid-template-columns:1fr;
+      gap:12px;
+      margin-top:0;
+    }
+
+    .bundleCard .bundleImg{
+      max-width:100%;
     }
 
     .covers{
@@ -321,19 +363,6 @@
     }
     .overlay .ukBtn{background:linear-gradient(135deg,var(--pink),var(--lav))}
     .overlay .usBtn{background:linear-gradient(135deg,var(--blue),var(--mint))}
-
-    .soonTag{
-      position:absolute;
-      top:10px;
-      left:10px;
-      padding:7px 10px;
-      font-size:13px;
-      font-weight:700;
-      border-radius:999px;
-      background:rgba(255,255,255,.92);
-      box-shadow:0 10px 22px rgba(0,0,0,.14);
-      color:#0f172a;
-    }
 
     .sectionTitle{
       margin:26px 0 10px;
@@ -401,11 +430,11 @@
       font-weight:700;
     }
 
-    /* MOBILE ONLY FIXES — desktop unchanged */
     @media(max-width:900px){
       .hero{grid-template-columns:1fr}
       .quote{grid-template-columns:1fr}
       .covers{grid-template-columns:repeat(2,1fr)}
+      .bundleGrid3{grid-template-columns:1fr}
       h1{font-size:56px}
       .hook{font-size:21px}
       .desc{font-size:17px}
@@ -501,88 +530,6 @@
           <a class="btn uk" id="heroUk" href="#" target="_blank" rel="noopener">Shop on Amazon UK</a>
           <a class="btn us" id="heroUs" href="#" target="_blank" rel="noopener">Shop on Amazon US</a>
         </div>
-
-<div class="starter">
-
-  <div class="starterTitle">
-    Dreamy Joe – Starter Set (Books 1–4)
-    <span class="badge">In stock</span>
-  </div>
-
-  <p class="starterText">
-    Four gentle, rhyming bedtime stories in one beautiful bundle — perfect as a gift set or bedtime pack for ages 3–6.
-  </p>
-
-  <div class="bundleRow">
-    <img class="bundleImg" src="Bundle-1-4.png" alt="Dreamy Joe Starter Set (Books 1–4) bundle">
-
-    <div class="bundleBtns">
-      <a class="btn uk" href="https://buy.stripe.com/28E7sEdNJbz0a1EdV58so00" target="_blank" rel="noopener">
-        Buy 1–4 (UK)
-      </a>
-
-      <a class="btn us" href="https://buy.stripe.com/9B6dR2bFBauW8XA5oz8so01" target="_blank" rel="noopener">
-        Buy 1–4 (US)
-      </a>
-    </div>
-  </div>
-
-
-  <div style="height:16px"></div>
-
-
-  <div class="starterTitle">
-    Dreamy Joe – The Next Adventures (Books 5–8)
-    <span class="badge">In stock</span>
-  </div>
-
-  <p class="starterText">
-    The next four Dreamy Joe adventures — expanding the collection with more animals, more feelings, and more bedtime favourites.
-  </p>
-
-  <div class="bundleRow">
-    <img class="bundleImg" src="Bundle-5-8.png" alt="Dreamy Joe Books 5–8 bundle">
-
-    <div class="bundleBtns">
-      <a class="btn uk" href="https://buy.stripe.com/5kQdR2cJFbz07Tw04f8so02" target="_blank" rel="noopener">
-        Buy 5–8 (UK)
-      </a>
-
-      <a class="btn us" href="https://buy.stripe.com/28E14g4d96eGehU3gr8so03" target="_blank" rel="noopener">
-        Buy 5–8 (US)
-      </a>
-    </div>
-  </div>
-
-
-  <div style="height:16px"></div>
-
-
-  <div class="starterTitle">
-    Dreamy Joe – The Complete Collection (Books 1–8)
-    <span class="badge">Best value • Save vs individual books or 4 book set</span>
-  </div>
-
-  <p class="starterText">
-    The full Dreamy Joe series in one beautiful bundle — perfect for families, gifts, nurseries, and schools.
-  </p>
-
-  <div class="bundleRow">
-    <img class="bundleImg" src="Bundle-1-8.png" alt="Dreamy Joe Complete Collection bundle">
-
-    <div class="bundleBtns">
-      <a class="btn uk" href="https://buy.stripe.com/14A5kwfVR5aC4Hk8AL8so04" target="_blank" rel="noopener">
-        Buy 1–8 (UK)
-      </a>
-
-      <a class="btn us" href="https://buy.stripe.com/14A5kwfVR5aC4Hk8AL8so04" target="_blank" rel="noopener">
-        Buy 1–8 (US)
-      </a>
-    </div>
-  </div>
-
-</div>
-
       </div>
 
       <div class="card joeCard">
@@ -598,6 +545,85 @@
           <p class="joeBulkNote" style="margin-top:10px;">
             Drop us a message and we’ll get back to you.
           </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bundleSection">
+      <div class="bundleGrid3">
+        <div class="bundleCard">
+          <div class="starterTitle">
+            Dreamy Joe – Starter Set (Books 1–4)
+            <span class="badge">In stock</span>
+          </div>
+
+          <p class="starterText">
+            Four gentle, rhyming bedtime stories in one beautiful bundle — perfect as a gift set or bedtime pack for ages 3–7.
+          </p>
+
+          <div class="bundleRow">
+            <img class="bundleImg" src="Bundle-1-4.png" alt="Dreamy Joe Starter Set (Books 1–4) bundle">
+
+            <div class="bundleBtns">
+              <a class="btn uk" href="https://buy.stripe.com/28E7sEdNJbz0a1EdV58so00" target="_blank" rel="noopener">
+                Buy 1–4 (UK)
+              </a>
+
+              <a class="btn us" href="https://buy.stripe.com/9B6dR2bFBauW8XA5oz8so01" target="_blank" rel="noopener">
+                Buy 1–4 (US)
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="bundleCard">
+          <div class="starterTitle">
+            Dreamy Joe – The Next Adventures (Books 5–8)
+            <span class="badge">In stock</span>
+          </div>
+
+          <p class="starterText">
+            The next four Dreamy Joe adventures — more animals, more gentle lessons, and more bedtime favourites.
+          </p>
+
+          <div class="bundleRow">
+            <img class="bundleImg" src="Bundle-5-8.png" alt="Dreamy Joe The Next Adventures (Books 5–8) bundle">
+
+            <div class="bundleBtns">
+              <a class="btn uk" href="https://buy.stripe.com/5kQdR2cJFbz07Tw04f8so02" target="_blank" rel="noopener">
+                Buy 5–8 (UK)
+              </a>
+
+              <a class="btn us" href="https://buy.stripe.com/28E14g4d96eGehU3gr8so03" target="_blank" rel="noopener">
+                Buy 5–8 (US)
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="bundleCard">
+          <div class="starterTitle">
+            Dreamy Joe – The Complete Collection (Books 1–8)
+            <span class="badge">Best value • Save vs individual books or 4 book set</span>
+          </div>
+
+          <p class="starterText">
+            The full Dreamy Joe series in one beautiful bundle — perfect for families, gifts, nurseries, and schools.
+          </p>
+
+          <div class="bundleRow">
+            <img class="bundleImg" src="Bundle-1-8.png" alt="Dreamy Joe Complete Collection bundle">
+
+            <div class="bundleBtns">
+              <a class="btn uk" href="https://buy.stripe.com/14A5kwfVR5aC4Hk8AL8so04" target="_blank" rel="noopener">
+                Buy 1–8 (UK)
+              </a>
+
+              <a class="btn us" href="https://buy.stripe.com/8x2bIU3959qS7TwaIT8so05" target="_blank" rel="noopener">
+                Buy 1–8 (US)
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -641,10 +667,10 @@
         <img src="assets-covers-5.png" alt="Dreamy Joe & Grumpy Giraffe">
         <div class="overlay">
           <a class="ukBtn" data-link="uk" href="https://www.amazon.co.uk/stores/Markie-Diamond/author/B0GFX6V2F8/allbooks" target="_blank" rel="noopener">Amazon UK</a>
-          <a class="usBtn" data-link="us" href="https://www.amazon.co.uk/stores/Markie-Diamond/author/B0GFX6V2F8/allbooks" target="_blank" rel="noopener">Amazon US</a>
+          <a class="usBtn" data-link="us" href="https://www.amazon.com/author/markiediamond" target="_blank" rel="noopener">Amazon US</a>
         </div>
       </div>
-      
+
       <div class="cover" data-book="6">
         <img src="assets-covers-6.png" alt="Dreamy Joe & Graceful Gorilla">
         <div class="overlay">
@@ -652,20 +678,20 @@
           <a class="usBtn" data-link="us" href="https://www.amazon.com/Dreamy-Graceful-Gorilla-Markie-Diamond/dp/1068274042/" target="_blank" rel="noopener">Amazon US</a>
         </div>
       </div>
-    
+
       <div class="cover" data-book="7">
         <img src="assets-covers-7.png" alt="Dreamy Joe & Patient Penguin">
         <div class="overlay">
           <a class="ukBtn" data-link="uk" href="https://www.amazon.co.uk/stores/Markie-Diamond/author/B0GFX6V2F8/allbooks" target="_blank" rel="noopener">Amazon UK</a>
-          <a class="usBtn" data-link="us" href="https://www.amazon.co.uk/stores/Markie-Diamond/author/B0GFX6V2F8/allbooks" target="_blank" rel="noopener">Amazon US</a>
+          <a class="usBtn" data-link="us" href="https://www.amazon.com/author/markiediamond" target="_blank" rel="noopener">Amazon US</a>
         </div>
       </div>
 
       <div class="cover" data-book="8">
         <img src="assets-covers-8.png" alt="Dreamy Joe & Tolerant Tiger">
         <div class="overlay">
-         <a class="ukBtn" data-link="uk" href="https://www.amazon.co.uk/stores/Markie-Diamond/author/B0GFX6V2F8/allbooks" target="_blank" rel="noopener">Amazon UK</a>
-         <a class="usBtn" data-link="us" href="https://www.amazon.co.uk/stores/Markie-Diamond/author/B0GFX6V2F8/allbooks" target="_blank" rel="noopener">Amazon US</a>
+          <a class="ukBtn" data-link="uk" href="https://www.amazon.co.uk/stores/Markie-Diamond/author/B0GFX6V2F8/allbooks" target="_blank" rel="noopener">Amazon UK</a>
+          <a class="usBtn" data-link="us" href="https://www.amazon.com/author/markiediamond" target="_blank" rel="noopener">Amazon US</a>
         </div>
       </div>
     </div>
@@ -702,7 +728,6 @@
   </div>
 
   <script>
-    // Stop placeholder links (#) from jumping to top
     document.addEventListener("click", (e) => {
       const a = e.target.closest("a");
       if (!a) return;
@@ -723,7 +748,6 @@
       document.getElementById("contact").scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
-    // New: bulk button scroll (replaces the old subcta link)
     document.getElementById("bulkScroll").addEventListener("click", smoothToContact);
 
     const emailBtn = document.getElementById("emailBtn");
