@@ -109,6 +109,7 @@
       grid-template-columns:1.1fr .9fr;
       gap:18px;
       margin-bottom:22px;
+      align-items:start;
     }
     .card{
       background:var(--card);
@@ -183,22 +184,16 @@
     .dark{background:linear-gradient(135deg,#0f172a,#334155)}
     .disabled{opacity:.55; filter:saturate(.8); cursor:default; pointer-events:none}
 
-    .starter{
-      margin-top:16px;
-      padding:16px 16px 14px;
-      border-radius:16px;
-      background:linear-gradient(135deg, rgba(255,95,162,.12), rgba(167,139,250,.12), rgba(59,130,246,.10));
-      border:1px solid rgba(15,23,42,.06);
-    }
     .starterTitle{
       font-size:18px;
       font-weight:700;
       color:#0f172a;
-      margin:0 0 6px;
+      margin:0 0 8px;
       display:flex;
       align-items:center;
       gap:10px;
       flex-wrap:wrap;
+      line-height:1.25;
     }
     .badge{
       font-size:13px;
@@ -291,6 +286,7 @@
       display:grid;
       grid-template-columns:repeat(3,1fr);
       gap:18px;
+      align-items:start;
     }
 
     .bundleCard{
@@ -298,10 +294,6 @@
       border-radius:var(--radius);
       box-shadow:var(--shadow);
       padding:20px;
-    }
-
-    .bundleCard .starterTitle{
-      margin-bottom:8px;
     }
 
     .bundleCard .starterText{
@@ -312,6 +304,7 @@
       grid-template-columns:1fr;
       gap:12px;
       margin-top:0;
+      align-items:start;
     }
 
     .bundleCard .bundleImg{
@@ -554,7 +547,6 @@
         <div class="bundleCard">
           <div class="starterTitle">
             Dreamy Joe – Starter Set (Books 1–4)
-            <span class="badge">In stock</span>
           </div>
 
           <p class="starterText">
@@ -579,7 +571,6 @@
         <div class="bundleCard">
           <div class="starterTitle">
             Dreamy Joe – The Next Adventures (Books 5–8)
-            <span class="badge">In stock</span>
           </div>
 
           <p class="starterText">
@@ -604,7 +595,6 @@
         <div class="bundleCard">
           <div class="starterTitle">
             Dreamy Joe – The Complete Collection (Books 1–8)
-            <span class="badge">Best value • Save vs individual books or 4 book set</span>
           </div>
 
           <p class="starterText">
