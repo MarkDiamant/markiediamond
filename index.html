@@ -182,28 +182,15 @@
     .uk{background:linear-gradient(135deg,var(--pink),var(--lav))}
     .us{background:linear-gradient(135deg,var(--blue),var(--mint))}
     .dark{background:linear-gradient(135deg,#0f172a,#334155)}
-    .disabled{opacity:.55; filter:saturate(.8); cursor:default; pointer-events:none}
 
     .starterTitle{
       font-size:18px;
       font-weight:700;
       color:#0f172a;
       margin:0 0 8px;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
       line-height:1.25;
     }
-    .badge{
-      font-size:13px;
-      font-weight:700;
-      padding:6px 10px;
-      border-radius:999px;
-      background:#fff;
-      box-shadow:0 10px 20px rgba(0,0,0,.10);
-      color:#0f172a;
-    }
+
     .starterText{
       margin:0;
       color:#334155;
@@ -215,7 +202,7 @@
     .bundleRow{
       margin-top:14px;
       display:grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns:1fr 1fr;
       gap:14px;
       align-items:center;
     }
@@ -239,16 +226,15 @@
     .joeCard{
       display:flex;
       flex-direction:column;
-      justify-content:center;
+      justify-content:space-between;
       align-items:center;
       gap:14px;
-      padding-top:18px;
-      padding-bottom:18px;
+      padding:20px 26px;
     }
     .joeImg{
       width:100%;
-      max-width:360px;
-      max-height:430px;
+      max-width:300px;
+      max-height:290px;
       object-fit:contain;
       border-radius:14px;
       background:#fff;
@@ -294,10 +280,18 @@
       border-radius:var(--radius);
       box-shadow:var(--shadow);
       padding:20px;
+      display:flex;
+      flex-direction:column;
+      height:100%;
+    }
+
+    .bundleCard .starterTitle{
+      min-height:48px;
     }
 
     .bundleCard .starterText{
       margin-bottom:12px;
+      min-height:72px;
     }
 
     .bundleCard .bundleRow{
@@ -305,10 +299,15 @@
       gap:12px;
       margin-top:0;
       align-items:start;
+      flex:1;
     }
 
     .bundleCard .bundleImg{
       max-width:100%;
+    }
+
+    .bundleCard .bundleBtns{
+      margin-top:auto;
     }
 
     .covers{
@@ -546,7 +545,7 @@
       <div class="bundleGrid3">
         <div class="bundleCard">
           <div class="starterTitle">
-            Dreamy Joe – Starter Set (Books 1–4)
+            Dreamy Joe – Starter Set<br>(Books 1–4)
           </div>
 
           <p class="starterText">
@@ -570,11 +569,11 @@
 
         <div class="bundleCard">
           <div class="starterTitle">
-            Dreamy Joe – The Next Adventures (Books 5–8)
+            Dreamy Joe – The Next Adventures<br>(Books 5–8)
           </div>
 
           <p class="starterText">
-            The next four Dreamy Joe adventures — more animals, more gentle lessons, and more bedtime favourites.
+            The next four Dreamy Joe adventures — more animals, gentle lessons, and bedtime favourites.
           </p>
 
           <div class="bundleRow">
@@ -594,11 +593,11 @@
 
         <div class="bundleCard">
           <div class="starterTitle">
-            Dreamy Joe – The Complete Collection (Books 1–8)
+            Dreamy Joe – The Complete Collection<br>(Books 1–8)
           </div>
 
           <p class="starterText">
-            The full Dreamy Joe series in one beautiful bundle — perfect for families, gifts, nurseries, and schools.
+            The full Dreamy Joe series in one beautiful bundle — ideal for families, gifts, nurseries, and schools.
           </p>
 
           <div class="bundleRow">
